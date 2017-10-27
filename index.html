@@ -6,6 +6,10 @@
     console.log('Boo!', err);
   });
 }
+  self.addEventListener('fetch', function(event) {
+  event.respondWith(new Response("Hello world!"));
+});
+  
   self.addEventListener('install', function(event) {
   event.waitUntil(
     fetchStuffAndInitDatabases()
