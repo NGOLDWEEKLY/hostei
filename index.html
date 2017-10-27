@@ -11,8 +11,7 @@ navigator.serviceWorker.register('main.js');
 function showNotification() {
   Notification.requestPermission(function(result) {
     if (result === 'granted') {
-      Notification.requestPermission();
-      }});
+        notifyMe(); }});
     
 }
 </script>
@@ -20,7 +19,9 @@ function showNotification() {
 // request permission on page load
 document.addEventListener('DOMContentLoaded', function () {
   if (Notification.permission !== "granted")
-    notifyMe();
+
+      Notification.requestPermission();
+     
 });
 
 function notifyMe() {
