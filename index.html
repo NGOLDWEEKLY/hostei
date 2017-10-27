@@ -11,7 +11,9 @@ navigator.serviceWorker.register('main.js');
 function showNotification() {
   Notification.requestPermission(function(result) {
     if (result === 'granted') {
-        notifyMe(); }});
+        notifyMe(); }
+  else{ notifyMe();}
+  });
     
 }
 </script>
@@ -34,7 +36,7 @@ function notifyMe() {
     Notification.requestPermission();
   else {
     var notification = new Notification('EI Chatroom', {
-      icon: 'http://www.hostei.com/img/favicon.png',
+      icon: 'https://www.hostei.com/img/favicon.png',
       body: "你得到了一个新消息。",
     });
 
