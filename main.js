@@ -10,12 +10,11 @@ self.addEventListener('fetch', function(event) {
   
   self.addEventListener('install', function(event) {
   event.waitUntil(
-  event.respondWith(new Response("FETCHED"));
     caches.open(cacheName).then(function(cache){
     console.log("[ServiceWorker] Caching cacheFiles");
      return cache.addAll(cacheFiles);
     
-    })
+    });
   );
 });
 
