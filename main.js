@@ -14,7 +14,7 @@ self.addEventListener('fetch', function(event) {
     console.log("[ServiceWorker] Caching cacheFiles");
      return cache.addAll(cacheFiles);
     
-    }));
+    })
   );
 });
 
