@@ -1,4 +1,22 @@
 <script>
+  if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/my-app/sw.js').then(function(reg) {
+    console.log('Yey!', reg);
+  }).catch(function(err) {
+    console.log('Boo!', err);
+  });
+}
+  self.addEventListener('install', function(event) {
+  event.waitUntil(
+    fetchStuffAndInitDatabases()
+  );
+});
+
+self.addEventListener('activate', function(event) {
+  // You're good to go!
+});
+</script>
+<script>
 // request permission on page load
 document.addEventListener('DOMContentLoaded', function () {
   if (Notification.permission !== "granted")
