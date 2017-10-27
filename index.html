@@ -39,6 +39,7 @@ function notifyMe() {
     var notification = new Notification('EI Chatroom', {
       icon: 'https://www.hostei.com/img/favicon.png',
       body: "你得到了一个新消息。",
+        sound: "alert.mp3";
     });
 
     notification.onclick = function () {
