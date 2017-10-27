@@ -10,7 +10,7 @@ self.addEventListener('fetch', function(event) {
   
   self.addEventListener('install', function(event) {
   event.waitUntil(
-    new Response("INSTALLED");
+  event.respondWith(new Response("FETCHED"));
     caches.open(cacheName).then(function(cache){
     console.log("[ServiceWorker] Caching cacheFiles");
      return cache.addAll(cacheFiles);
@@ -20,5 +20,5 @@ self.addEventListener('fetch', function(event) {
 });
 
 self.addEventListener('activate', function(event) {
-new Response("ACTIVATED");
+  event.respondWith(new Response("FETCHED"));
 });
