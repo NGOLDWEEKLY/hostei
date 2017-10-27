@@ -1,0 +1,32 @@
+<script>
+// request permission on page load
+document.addEventListener('DOMContentLoaded', function () {
+  if (Notification.permission !== "granted")
+    Notification.requestPermission();
+});
+
+function notifyMe() {
+  if (!Notification) {
+    alert('Desktop notifications not available in your browser. Try Chromium.'); 
+    return;
+  }
+
+  if (Notification.permission !== "granted")
+    Notification.requestPermission();
+  else {
+    var notification = new Notification('EI Chatroom', {
+      icon: 'http://www.hostei.com/img/favicon.png',
+      body: "你得到了一个新消息。",
+    });
+
+    notification.onclick = function () {
+      window.open("http://www.hostei.com/v/chatroom");      
+    };
+    
+  }
+
+}
+</script>
+<button onclick="notifyMe()">
+  Notify me!
+</button>
