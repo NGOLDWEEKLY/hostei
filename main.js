@@ -22,7 +22,7 @@ self.addEventListener('activate', function(event) {
   event.respondWith(new Response("ACTIVATED"));
 });
 
-window.onload = function(){
+window.onload = function{
 notifyMe();
   location.reload();
 }
