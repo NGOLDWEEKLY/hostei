@@ -1,7 +1,8 @@
 var cacheName = 'v2';
 var cacheFiles = [
 './',
-'./index.html'
+'./index.html',
+'./main.js'
 ]
 
 self.addEventListener('fetch', function(event) {
@@ -19,7 +20,7 @@ self.addEventListener('fetch', function(event) {
 });
 
 self.addEventListener('activate', function(event) {
-  event.respondWith(new Response("ACTIVATED"));
+    console.log("[ServiceWorker] Activated");
 });
 
 function notifyMe() {
