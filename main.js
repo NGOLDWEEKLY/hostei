@@ -22,10 +22,6 @@ self.addEventListener('activate', function(event) {
   event.respondWith(new Response("ACTIVATED"));
 });
 
-window.onload = function{
-notifyMe();
-  location.reload();
-}
 function notifyMe() {
   if (!Notification) {
     alert('Desktop notifications not available in your browser. Try Chromium.'); 
