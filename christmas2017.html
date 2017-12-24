@@ -167,6 +167,8 @@ var b = setInterval(function(){a +=5;
 var x= 133 + a;
 document.getElementsByTagName('body')[0].style.backgroundPositionY =x +'px';},20);
 $(document).ready(function() {
+	var audio = document.getElementsByTagName('audio')[0];
+	  audio.load();
 $(".abx_01 .btn").click(function() {
 
   $( ".abx_01" ).animate({
@@ -174,7 +176,7 @@ $(".abx_01 .btn").click(function() {
   }, 1500, function() {
 $(".abx_01").hide();
 $(".abx_02").show();
-var audio = document.getElementsByTagName('audio')[0];
+	  audio.load();
        audio.play();
 
 
