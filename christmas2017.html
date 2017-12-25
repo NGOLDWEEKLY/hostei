@@ -193,6 +193,12 @@ $(".abx_02 img").click(function() {
     opacity: 0
   }, 500, function() {
 $(this).hide();
+	  	 var player = document.getElementById('player2');
+player.src = 'yay.mp3';
+player.play();
+	  
+	
+
 document.getElementsByTagName('img')[0].style.animation ='unset';
 
 document.getElementsByTagName('img')[0].style.transform ='rotate(-8deg)';
@@ -224,6 +230,10 @@ $(".abx_03").show();$("#ad_banner").show();
 <body>
 
 	<audio id="player" oncanplay="myOnCanPlayFunction()"
+       oncanplaythrough="myOnCanPlayThroughFunction()"
+       onloadeddata="myOnLoadedData()"></audio>
+
+	<audio id="player2" oncanplay="myOnCanPlayFunction()"
        oncanplaythrough="myOnCanPlayThroughFunction()"
        onloadeddata="myOnLoadedData()"></audio>
 
