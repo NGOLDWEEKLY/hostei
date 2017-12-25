@@ -223,8 +223,16 @@ $(".abx_03").show();$("#ad_banner").show();
 </head>
 <body>
 
-	<audio id="player"></audio>
-	
+	<audio id="player" oncanplay="myOnCanPlayFunction()"
+       oncanplaythrough="myOnCanPlayThroughFunction()"
+       onloadeddata="myOnLoadedData()"></audio>
+
+
+<script>
+function myOnCanPlayFunction() { console.log('Can play'); }
+function myOnCanPlayThroughFunction() { console.log('Can play through'); }
+function myOnLoadedData() { console.log('Loaded data'); }
+</script>
 <div class="abx_01">
 <p>Hi <span>dear</span>, I have something to give you...</p>
 <div class="btn"><p>Take a look</p></div>
