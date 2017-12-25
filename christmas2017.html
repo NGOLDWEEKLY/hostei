@@ -193,10 +193,10 @@ $(".abx_02 img").click(function() {
     opacity: 0
   }, 500, function() {
 $(this).hide();
-	  	 var player = document.getElementById('player2');
-player.src = 'yay.mp3';
-player.play();
-	  
+	
+	    	 var player2 = document.getElementById('player2');
+player2.src = 'yay.mp3';
+player2.load();
 	
 
 document.getElementsByTagName('img')[0].style.animation ='unset';
@@ -210,7 +210,7 @@ document.getElementsByTagName('img')[0].style.transform ='rotate(-8deg)';
 bottom:'-150%'
   }, 2500, function() {
 $(".abx_03").show();$("#ad_banner").show();
-
+player2.play();
 });
 
 });
