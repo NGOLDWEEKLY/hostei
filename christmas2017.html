@@ -167,8 +167,7 @@ var b = setInterval(function(){a +=5;
 var x= 133 + a;
 document.getElementsByTagName('body')[0].style.backgroundPositionY =x +'px';},20);
 $(document).ready(function() {
-	var audio = document.getElementsByTagName('audio')[0];
-	  audio.load();
+
 $(".abx_01 .btn").click(function() {
 
   $( ".abx_01" ).animate({
@@ -176,8 +175,11 @@ $(".abx_01 .btn").click(function() {
   }, 1500, function() {
 $(".abx_01").hide();
 $(".abx_02").show();
-	  audio.load();
-       audio.play();
+	 var player = document.getElementById('player');
+player.src = 'cpimusic.mp3';
+player.play();
+	  
+	
 
 
 
@@ -220,9 +222,9 @@ $(".abx_03").show();$("#ad_banner").show();
 </script>
 </head>
 <body>
-	<audio id="audioID">
-      <source src="cpimusic.mp3" type="audio/mp3" preload="auto" />
-</audio>
+
+	<audio id="player"></audio>
+	
 <div class="abx_01">
 <p>Hi <span>dear</span>, I have something to give you...</p>
 <div class="btn"><p>Take a look</p></div>
