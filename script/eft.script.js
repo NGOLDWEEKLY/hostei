@@ -50,7 +50,7 @@ var vid = document.getElementById("idle_video");
 var msc = document.getElementById("msc");
 var vidok = vid.readyState;
 var mscok = msc.readyState;
-	if( vidok == true && mscok == true){
+	if( vidok == 4 && mscok == 4){
 	vid.autoplay = true;
 	msc.autoplay = true;}else{
 	console.log("hell!");
