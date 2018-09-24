@@ -1,10 +1,8 @@
 ::-moz-selection { 
-    color: #FFFFFF;
     background: rgba(255,255,255,0.1);
 }
 
 ::selection { 
-    color: #FFFFFF;
     background: rgba(255,255,255,0.1);
 }
 body{
