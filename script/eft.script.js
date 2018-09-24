@@ -45,17 +45,7 @@ $(".nav-1-overlay").css("opacity", yz);
 });
 
 
-window.onload = function(){
-var vid = document.getElementById("idle_video");
-var msc = document.getElementById("msc");
-var vidok = vid.readyState;
-var mscok = msc.readyState;
-	if( vidok == 4 && mscok == 4){
-	vid.autoplay = true;
-	msc.autoplay = true;}else{
-	console.log("hell!");
-	}
-}
+
 function onVideoEnded(){
 	$(".skip-btn").hide();
 	$('video')[0].pause();
