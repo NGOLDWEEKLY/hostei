@@ -1,9 +1,13 @@
 
 $(document).ready(function () {
 	var vid =document.getElementById("idle_video");
+
 	if(vid.paused){
-		alert("There was an error while playing video, hit 'F5' to refresh the page.");
-		
+	if (confirm("If you get this message, you should be patience/n as google chrome has forced autoplay video with sound to be disabled.")) {
+    vid.play();
+} else {
+}
+			
 	};
 document.getElementById("navc").classList.toggle("nav-ban-container");	
 var movementStrength = 15;
