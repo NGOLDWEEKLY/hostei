@@ -3,8 +3,12 @@ $(document).ready(function () {
 	var vid =document.getElementById("idle_video");
 
 	if(vid.paused){
-	if (confirm("If you get this message, you should be patience/n as google chrome has forced autoplay video with sound to be disabled.")) {
-    vid.play();
+$(".play-btn").show();
+if (confirm("If you get this message, you should be patience/n as google chrome has forced autoplay video with sound to be disabled.")) {
+  $(".play-btn").click(function () {
+vid.play();
+});
+	
 } else {
 }
 			
