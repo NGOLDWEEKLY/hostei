@@ -1,12 +1,11 @@
 
 function explode(){
-	
-			var preloader = document.getElementById("pre-loader");
-			var nav = document.getElementById("nav-1");
-			
-         
-			nav.style.display="block";
-			  $( ".motion-container" ).animate({
+	var preloader = document.getElementById("pre-loader");
+	var nav = document.getElementById("navc");
+	var nav2 = document.getElementById("nav-1");
+	nav.style.display="flex";
+	nav2.style.display="block";
+	$( ".motion-container" ).animate({
    opacity: 0 
   }, 1000, function() {
 	     preloader.remove();
@@ -15,16 +14,12 @@ function explode(){
 }
 
         function onVideoEnded(){
-				$(".skip-btn").hide();
+	$(".skip-btn").hide();
 	$('video')[0].pause();
-	
-				$(".motion-container").show();
-  $( ".motion-container" ).animate({
-    opacity: 1
-  }, 2000, function() {
-	  
-				$(".video-container").hide();
-	  setTimeout(explode, 2000);
+	$(".motion-container").show();
+        $( ".motion-container" ).animate({opacity: 1}, 2000, function() {
+	  	$(".video-container").hide();
+	        setTimeout(explode, 2000);
   });
         }
 		
