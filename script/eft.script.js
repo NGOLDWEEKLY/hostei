@@ -1,5 +1,7 @@
 
 $(document).ready(function () {
+	var vid =document.getElementById("idle_video");
+	if(vid.paused){location.reload();};
 document.getElementById("navc").classList.toggle("nav-ban-container");	
 var movementStrength = 15;
 var height = movementStrength / $(window).height();
