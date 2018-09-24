@@ -128,6 +128,11 @@ list-style-type: none;
     font-size: 64px;
     color: #000;
 }
+.play-btn p{
+margin: 0;
+    text-align: center;
+    padding-left: 10px;
+    cursor: default;}
 .skip-btn{
 
     bottom: 5%;
