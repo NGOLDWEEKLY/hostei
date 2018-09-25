@@ -1,19 +1,18 @@
 
 $(document).ready(function () {
 	var vid =document.getElementById("idle_video");
+setTimeout(function(){
+		if(vid.paused){
+	vid.setAttribute("controls","");
+	}else{
+		
+	vid.removeAttribute("controls");
+		}
 
-	if(vid.paused){
-
-if (confirm("If you get this message, you should be patience as google chrome has forced autoplay video with sound to be disabled.")) {
-
-vid.play();
-	  
-
-	
-} else {
-}
-			
-	};
+	 
+	 }, 500);
+	vid.onplaying = function(){
+	vid.removeAttribute("controls");};
 document.getElementById("navc").classList.toggle("nav-ban-container");	
 var movementStrength = 15;
 var height = movementStrength / $(window).height();
@@ -74,8 +73,10 @@ function del(){
 	var preloader = document.getElementById("pre-loader");
 	var nav = document.getElementById("navc");
 	var nav2 = document.getElementById("nav-1");
+	var nav3 = document.getElementById("nav-2");
 	nav.style.display="flex";
 	nav2.style.display="block";
+	nav3.style.display="block";
 	$( ".motion-container" ).animate({
    opacity: 0 
   }, 1000, function() {
