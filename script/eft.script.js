@@ -1,5 +1,19 @@
 
 $(document).ready(function () {
+	
+   $("footer").css({
+            'top' : $('.nav-1').outerHeight() + $('.nav-2').outerHeight()  + 'px' 
+        });
+	
+	$(window).resize(function() {
+
+ $("footer").css({
+            'top' : $('.nav-1').outerHeight() + $('.nav-2').outerHeight()  + 'px' 
+        });
+	
+});
+	
+	
 	var vid =document.getElementById("idle_video");
 setTimeout(function(){
 		if(vid.paused){
@@ -11,6 +25,8 @@ setTimeout(function(){
 
 	 
 	 }, 500);
+	 
+	
 	vid.onplaying = function(){
 	vid.removeAttribute("controls");};
 document.getElementById("navc").classList.toggle("nav-ban-container");	
@@ -34,13 +50,13 @@ onVideoEnded();
     scrollTop: $(".nav-2").offset().top  }, 1500);
 });
 
-
+var ready = 0;
 $(document).scroll(function(){ 
 	var x=window.pageYOffset; 
 	var na = $( ".nav-2" );
 	var off = na.offset().top;
 	var d =off-20;
-	$('#navc').toggleClass("nav-ban-container-active", (x >= d));
+	$('#navc').toggleClass("nav-ban-container-active",(x>=d));
 	if(x >= d){
 	document.getElementById("navc-pic").setAttribute("src","sub/logo-old.png");
 		}else{
@@ -77,6 +93,7 @@ function del(){
 	nav.style.display="flex";
 	nav2.style.display="block";
 	nav3.style.display="block";
+
 	$( ".motion-container" ).animate({
    opacity: 0 
   }, 1000, function() {

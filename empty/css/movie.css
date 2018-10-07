@@ -1,4 +1,4 @@
-::-moz-selection { 
+﻿::-moz-selection { 
     background: rgba(255,255,255,0.1);
 }
 
@@ -12,8 +12,8 @@ body{
 	img{
 		pointer-events: none;
 		}
-			#navc{
-display:none;
+		#navc{
+display:flex;
 	 top: 0;
     left: 0;
     width: 100%;
@@ -83,117 +83,31 @@ list-style-type: none;
 			}
 	
 	
-		.pre-loader{
-  position: fixed;
-  left:0;
-  right:0;
-  top: 0;
-  bottom: 0;
-  width: 100%;
-  height: 100%; 
-  overflow: hidden;
-  z-index:999;
-}
- .video-container {
-	   position: fixed;
-  left:0;
-  right:0;
-  top: 0;
-  bottom: 0;
-  width: 100%;
-  height: 100%; 
-  overflow: hidden;
-  z-index:4;
-	 
-	 }
-.video-container video {
-  min-width: 100%; 
-  min-height: 100%; 
-  width: auto;
-  height: auto;
-  position: absolute;
-  z-index:10;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%,-50%);
-}
-.play-btn{
-display:none;
-    position: absolute;
-    z-index: 999;
-    width: 100px;
-    height: 100px;
-    background: #ddd;
-    border-radius: 50%;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-    text-align: center;
-    line-height: 93px;
-    font-size: 64px;
-    color: #000;
-}
-.play-btn p{
-margin: 0;
-    text-align: center;
-    padding-left: 10px;
-    cursor: default;}
-.skip-btn{
 
-    bottom: 5%;
-    right: 5%;
-
-cursor:pointer;
-    position: absolute;
-    z-index: 10;
-    width: 120px;
-    height: 50px;
-    margin: 0;
-    background: rgba(0,0,0,0.4);
-	}
-	.skip-btn p{
-font-weight: 400;
-line-height:48px;
-    font-size: 20px;
-    text-align: center;
-margin:0;
-    color: #fff;
-	}
-	
-.skip-btn:hover{
-text-decoration:underline;
-
-    text-decoration-color: #fff;
-background:rgba(0,0,0,0.8);
-	}
-	.motion-container{
-		    background: #fff;
-    width: 100%;
-    height: 100%;opacity:0;
-	display:none;
-    position: absolute;z-index:5;}
-	.motion-container img{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-    width: 40%;
-    margin: auto;}
 .nav-1{
-display:none;
 	background-color:#777;
-	background-image:url("../sub/nav-1/bckg-1-1.png");
+	background-image:url("../sub/movie/nav-1/bckg-1-1.png");
 	    background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     width: 100%;
     position: fixed;  
 	z-index: 0;
-    height: 100%;
+    height: 80%;
     top: 0;
     bottom: 0;
     left: 0;
     right: 0;}
+	.nav-1 .runner{
+		display: flex;
+    justify-content: center;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    top: 50%;
+    transform: translate(0,-50%);
+}
 .nav-1 .logo{
     position: absolute;
       top: 40%;
@@ -201,45 +115,43 @@ display:none;
     left: 10%;
 	animation:  run 1s;
 }
-	.nav-1 .type-wrap {
-		    margin: 2vh;}
-	.nav-1 span{   
-	    font-family: 'Oleo Script', cursive;
+.nav-1 h1,.nav-1 p{
 	color:white;
-    font-size: 58px;
-    font-weight: bold;
+    margin: 5px 20px;
+	}
+	
+	.nav-1 h1{   
+	    font-family: 'Oleo Script', cursive;
+ 
+	letter-spacing: 0.1vh
 		
 		}
 		
 
-.nav-1-det {
-    width: 60%;
-    top: 34%;
-    position: absolute;
-    left: 12vh;
+.nav-1-det {  
+  display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: max-content;
     animation: run 1s;
-	max-width:500px;
+    font-size: 31px;
+    min-width: 377px;
+	    line-height: 59px;
 			}
 			
-			.nav-1-run-pic{
-    height: 80%;
-    background-size: 30vh;
-    background-repeat: no-repeat;
-	
-    background-position: 26px 60px;
-    background-image: url(../sub/nav-1/bckg-1.png);
-    width: 37%;
-    position: absolute;
-    top: 20%;
-    bottom: 0;
-    right: 0;
-    min-width: 300px;
-	
-			animation:run2 1s;
-				}
+							@keyframes run{
+					0%{
+						transform:translate(0,-20%);opacity:0.5;
+						}
+					100%{
+						transform:translate(0,0);opacity:1;
+
+						
+						}
+					}
 			.nav-1-btn a {   
 			 position: absolute;
-    bottom: 20px;
+    bottom:3%;
     left: 50%;
     z-index: 2;
     display: inline-block;
@@ -252,34 +164,16 @@ display:none;
     padding-top: 42px;
     transition: opacity 0.3s;
 }
+
+.nav-1-vid{
+
+    display: flex;
+    flex-direction: column;
+    animation: run 1s;
+    max-width: 500px;
+	}
 .nav-1-btn a:hover {
   opacity: 0.5;
-}
-
-
-	.nav-1-btn a span {
-    position: absolute;
-    top: 0;
-    left: 50%;
-    width: 20px;
-    height: 37px;
-    margin-left: -11px;
-    border: 1.2px solid #fff;
-    border-radius: 50px;
-    box-sizing: border-box;
-}
-	.nav-1-btn a span::before {    position: absolute;
-    top: 4px;
-    left: 50%;
-    content: '';
-    width: 6px;
-    height: 6px;
-    margin-left: -3px;
-    background-color: #fff;
-    border-radius: 100%;
-    -webkit-animation: scrl 2s infinite;
-    animation: scrl 2s infinite;
-    box-sizing: border-box;
 }
 
 @keyframes  scrl  {
@@ -307,16 +201,7 @@ display:none;
 					width: 100%;
 					height: 100%
 					;top: 0;bottom: 0;left: 0;right: 0;}
-				@keyframes run{
-					0%{
-						top: 24%;opacity:0.5;
-						}
-					100%{
-						top: 34%;opacity:1;
 
-						
-						}
-					}
 									@keyframes run2{
 					0%{
 						top: 10%;opacity:0.5;
@@ -330,13 +215,13 @@ display:none;
 
 .nav-2{
 	background-color:#f1f1f1;
-display:none;
+
     width: 100%;
     position:absolute;  
 	z-index: 0;
     height: max-content;
     min-height: 100%;
-    top: 100%;
+    top: 80%;
     bottom: 0;
     left: 0;
     right: 0;}
@@ -388,15 +273,6 @@ position: relative;
 .nav-2-run-pic:hover {
 animation:btnmove 0.6s infinite;
 }
-footer{
-	    background-color: #804d78;
-    padding: 5px;
-    text-align: center;
-    color: #fff;
-    position: absolute;
-    top: 200%;
-    left: 0;
-    right: 0;}
 @keyframes btnmove{
     0%{
     transform: translate(21px,0);}

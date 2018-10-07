@@ -1,0 +1,15 @@
+﻿
+.nav-1{
+	background-color:#777;
+	background-image:url("../sub/movie/nav-1/bckg-1-1.jpeg");
+	    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    position: fixed;  
+	z-index: 0;
+    height: 80%;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;}
