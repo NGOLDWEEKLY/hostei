@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<style>
+body{
+	background:#fff;
+	font-family: Arial;
+	font-size: 30px;
+	color:#555;
+}	
+
+</style>
+<script>
+	$(document).ready(function(){
+
+var cq1a = Math.floor(Math.random() * (10-2))+2;
+var cq1b = Math.floor(Math.random() * (cq1a-2))+2;
+var cq1="从";
+for(var i=0;i<cq1a;i++){
+cq1+=i;
+if(i<cq1a){cq1+="，";}else{cq1+="中，"}
+}
+cq1=cq1+"选取"+cq1b+"个数字，可组成多少";
+if(Math.floor(Math.random() * 2) == 1){cq1+="不";}
+cq1+="重复的数？";
+$("#cq1 .q").html(cq1);
+var cq1ans=nPr(cq1a,cq1b);
+$("#cq1 .ans").html(cq1ans);
+
+function nPr(n,r){
+var num=1;
+var ans=1;
+for(var i=n;num<=r;i--){
+ans*=i;
+num++;}
+return ans;
+}
+	});
+
+</script>
+</head>
+<body>
+<div class="Cheader">
+	<p>Math Conceptia</p>
+</div>
+<div class="Ccon">
+	<div>Part 1</div>
+	<div class="Cq" id="cq1">
+<div class="q"></div>
+<div class="ans"></div>
+</div>
+</div>
+</body>
+</html>
