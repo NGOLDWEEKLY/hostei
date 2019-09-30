@@ -106,6 +106,20 @@ num++;}
 return ans;
 }
 
+$(document).on('keypress',function(e) {
+    if(e.which == 13) {
+
+var uans=parseInt($("#cq1 .ansbox").html());
+if(cq1ans == uans){
+$("#cq1 .ansbuzz").html("答对了！");location.reload();
+}else if($("#cq1 .ansbox").html()==""){
+$("#cq1 .ansbuzz").html("请输入数值");}else{
+$("#cq1 .ansbuzz").html("不对哦");
+}      return false;
+    }
+});
+
+
 $( "#cq1 .ansbuzz" ).click(function() {
 var uans=parseInt($("#cq1 .ansbox").html());
 if(cq1ans == uans){
