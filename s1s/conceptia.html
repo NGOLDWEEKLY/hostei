@@ -9,7 +9,7 @@
 body{
 	background:#fff6a4;
 	font-family: Arial;
-	font-size: 30px;
+	font-size: 24px;
 	color:#555;
 }	
 .Cheader{
@@ -34,7 +34,7 @@ transform: translate(-50%,-50%);
 .ansbox{
 background: #c12306;
     height: 50px;
-    margin: 20px 0;
+    margin: 12px 0;
     padding-left: 20px;
     line-height: 50px;
 }
@@ -52,33 +52,76 @@ cursor:pointer;
 }
 .Cq .q{
 letter-spacing: 1.2px;
-    line-height: 40px;
+    line-height: 35px;
     padding: 10px;}
 </style>
 <script>
 	$(document).ready(function(){
 var cq1ans;
+var rep=Math.floor(Math.random() * 2);
+var startpt=0;
 var cq1a = Math.floor(Math.random() * (10-2))+2;
 var cq1b = Math.floor(Math.random() * (cq1a-2))+2;
-console.log(cq1a);console.log(cq1b);
+if(cq1a>=6){
+startpt=Math.floor(Math.random() * 3)+1;
+}
+if(rep==1){
+cq1b=4;
+}
 var cq1="从";
-for(var i=0;i<cq1a;i++){
+
+var code = new Array(cq1a-startpt);
+var perma=0,permb=0,permc=0,permd=0;
+for(var i=startpt;i<cq1a;i++){
+if(rep==0){
 cq1+=i;
-if(i<cq1a){cq1+="，";}else{cq1+="中，"}
-}
-cq1=cq1+"选取"+cq1b+"个数字，可组成多少";
-if(Math.floor(Math.random() * 2) == 1){
-cq1+="不";
-cq1ans=nPr(cq1a,cq1b,0);
-
+if(i+1 != cq1a){
+cq1+=", ";}
 }else{
-cq1+="可";
-cq1ans=times(cq1a,cq1b,0);
+
+
+
+
+var reptot=Math.floor(Math.random() * 5)+1;
+if(reptot >= 4){perma++;}
+if(reptot >= 3){permb++;}
+if(reptot >= 2){permc++;}
+if(reptot >= 1){permd++;}
+
+for(var ia=0;ia<reptot;ia++){
+cq1+=i;
+if(i+1 != cq1a ||(i+1 == cq1a && ia+1 != reptot)){
+cq1+=", ";}
+}
+
+
+
+
 
 }
-cq1+="重复数字的"+cq1b+"位数？";
-$("#cq1 .q").html(cq1);
 
+}
+cq1a-=startpt;
+cq1=cq1+"中选取"+cq1b+"个数字，";
+if(rep==0){cq1+= "可组成多少";}else{cq1+= "有多少种选法？";}
+if(Math.floor(Math.random() * 2) == 1 && rep==0){
+cq1+="不重复数字的"+cq1b+"位数？";
+cq1ans=nPr(cq1a,cq1b,startpt);
+
+}else if(rep==1){
+console.log(nCr(perma,1));
+console.log(nCr(permb,1)*nCr(cq1a-1,1));
+console.log(nCr(permc,1)*nCr(cq1a-1,2));
+console.log(nCr(permc,2));
+console.log(nCr(cq1a,4));
+cq1ans=nCr(perma,1)+nCr(permb,1)*nCr(cq1a-1,1)+nCr(permc,1)*nCr(cq1a-1,2)+nCr(permc,2)+nCr(cq1a,4);
+console.log(cq1ans);
+}else{
+cq1+="可重复数字的"+cq1b+"位数？";
+cq1ans=times(cq1a,cq1b,startpt);
+
+}
+$("#cq1 .q").html(cq1);
 
 function times(n,r,cond){
 var ans=1;
@@ -90,8 +133,22 @@ for(var i=1;i<=r;i++){
 ans*=n;
 }
 return ans;
-}
 
+}
+function nCr(n,r){
+if(n<r){return 0;}
+else{
+var num=1;
+var ans=1;
+for(var i=n;num<=r;i--){
+ans*=i;
+num++;}
+for(var i=1;i<=r;i++){
+ans /= i;
+}
+return ans;
+}
+}
 function nPr(n,r,cond){
 var num=1;
 var ans=1;
@@ -146,6 +203,9 @@ $("#cq1 .ansbuzz").html("不对哦");
 <div class="ansbuzz">作答</div>
 
 </div>
+</div>
+<div class="Cfooter">
+	<p></p>	
 </div>
 </body>
 </html>
