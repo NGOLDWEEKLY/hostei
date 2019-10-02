@@ -32,11 +32,17 @@ transform: translate(-50%,-50%);
     font-family: Arial, Microsoft Yahei;
     font-weight: bold;}
 .ansbox{
-background: #c12306;
-    height: 50px;
+    background: #c12306;
     margin: 12px 0;
     padding-left: 20px;
-    line-height: 50px;
+    padding: 1px 20px 1px 20px;
+}
+.ansbox p{
+outline: none;
+    height: 100%;
+    overflow-x: auto;
+    margin: 9px 0;
+    white-space: nowrap;
 }
 .ansbuzz{
 cursor:pointer;
@@ -57,16 +63,28 @@ letter-spacing: 1.2px;
 </style>
 <script>
 	$(document).ready(function(){
+
+
 var cq1ans;
 var rep=Math.floor(Math.random() * 2);
 var startpt=0;
+var strvoc=["红","黄","蓝","绿","白","黑","紫","橙","灰","褐"];
+var stralp=new Array(26);
+for(var ii=0;ii<stralp.length;ii++){
+stralp[ii]=(ii + 10).toString(36).toUpperCase();
+}
+ strvoc.sort(() => Math.random() - 0.5);
+ stralp.sort(() => Math.random() - 0.5);
+var isStr =3;
+var isvoc =["球，","球，","字，","数字，"];
 var cq1a = Math.floor(Math.random() * (10-2))+2;
-var cq1b = Math.floor(Math.random() * (cq1a-2))+2;
 if(cq1a>=6){
 startpt=Math.floor(Math.random() * 3)+1;
 }
+var cq1b = Math.floor(Math.random() * (cq1a-startpt-2))+2;
 if(rep==1){
 cq1b=4;
+isStr =Math.floor(Math.random()*3);
 }
 var cq1="从";
 
@@ -87,13 +105,19 @@ if(reptot >= 4){perma++;}
 if(reptot >= 3){permb++;}
 if(reptot >= 2){permc++;}
 if(reptot >= 1){permd++;}
-
+if(isStr == 0 || isStr ==1){
+cq1+=reptot+"颗"+strvoc[i]+"球";
+if(i+1 != cq1a){
+cq1+="，";
+}
+}
+else{
 for(var ia=0;ia<reptot;ia++){
-cq1+=i;
+cq1+=stralp[i];
 if(i+1 != cq1a ||(i+1 == cq1a && ia+1 != reptot)){
 cq1+=", ";}
 }
-
+}
 
 
 
@@ -102,7 +126,7 @@ cq1+=", ";}
 
 }
 cq1a-=startpt;
-cq1=cq1+"中选取"+cq1b+"个数字，";
+cq1=cq1+"中选取"+cq1b+"个"+isvoc[isStr];
 if(rep==0){cq1+= "可组成多少";}else{cq1+= "有多少种选法？";}
 if(Math.floor(Math.random() * 2) == 1 && rep==0){
 cq1+="不重复数字的"+cq1b+"位数？";
@@ -163,28 +187,28 @@ num++;}
 return ans;
 }
 
-$(document).on('keypress',function(e) {
-    if(e.which == 13) {
-
-var uans=parseInt($("#cq1 .ansbox").html());
-if(cq1ans == uans){
+function chk(){
+var uans=parseInt($("#cq1 .ansbox p").html());
+if(uans == cq1ans){
 $("#cq1 .ansbuzz").html("答对了！");location.reload();
-}else if($("#cq1 .ansbox").html()==""){
+}else if(isNaN(uans)){
 $("#cq1 .ansbuzz").html("请输入数值");}else{
 $("#cq1 .ansbuzz").html("不对哦");
-}      return false;
+}
+}
+
+$(".ansbox p").focus();
+$(".ansbox p").on('keypress',function(e) {
+  if (isNaN(String.fromCharCode(e.which))) e.preventDefault();
+    if(e.which == 13) {
+chk();
+return false;
     }
 });
 
 
 $( "#cq1 .ansbuzz" ).click(function() {
-var uans=parseInt($("#cq1 .ansbox").html());
-if(cq1ans == uans){
-$("#cq1 .ansbuzz").html("答对了！");location.reload();
-}else if($("#cq1 .ansbox").html()==""){
-$("#cq1 .ansbuzz").html("请输入数值");}else{
-$("#cq1 .ansbuzz").html("不对哦");
-}
+chk();
 });
 
 	});
@@ -199,7 +223,9 @@ $("#cq1 .ansbuzz").html("不对哦");
 
 	<div class="Cq" id="cq1">
 <div class="q"></div>
-<div class="ansbox" contenteditable="true"></div>
+<div class="ansbox">
+<p contenteditable="true"></p>
+</div>
 <div class="ansbuzz">作答</div>
 
 </div>
