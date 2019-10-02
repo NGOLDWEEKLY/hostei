@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -75,6 +76,8 @@ cursor:pointer}
 var cq1ans;
 var rep=Math.floor(Math.random() * 2);
 var startpt=0;
+var isPer =Math.floor(Math.random()*2);
+var iss=["选","排"];
 var strvoc=["红","黄","蓝","绿","白","黑","紫","橙","灰","褐"];
 var stralp=new Array(26);
 for(var ii=0;ii<stralp.length;ii++){
@@ -92,6 +95,7 @@ var cq1b = Math.floor(Math.random() * (cq1a-startpt-2))+2;
 if(rep==1){
 cq1b=4;
 isStr =Math.floor(Math.random()*3);
+
 }
 var cq1="从";
 
@@ -134,7 +138,7 @@ cq1+=", ";}
 }
 cq1a-=startpt;
 cq1=cq1+"中选取"+cq1b+"个"+isvoc[isStr];
-if(rep==0){cq1+= "可组成多少";}else{cq1+= "有多少种选法？";}
+if(rep==0){cq1+= "可组成多少";}else{cq1+= "有多少种"+iss[isPer]+"法？";}
 if(Math.floor(Math.random() * 2) == 1 && rep==0){
 cq1+="不重复数字的"+cq1b+"位数？";
 cq1ans=nPr(cq1a,cq1b,startpt);
@@ -145,7 +149,12 @@ console.log(nCr(permb,1)*nCr(cq1a-1,1));
 console.log(nCr(permc,1)*nCr(cq1a-1,2));
 console.log(nCr(permc,2));
 console.log(nCr(cq1a,4));
+if(isPer == 0){
 cq1ans=nCr(perma,1)+nCr(permb,1)*nCr(cq1a-1,1)+nCr(permc,1)*nCr(cq1a-1,2)+nCr(permc,2)+nCr(cq1a,4);
+}
+else if(isPer == 1){
+cq1ans=nCr(perma,1)+nCr(permb,1)*nCr(cq1a-1,1)*4+nCr(permc,1)*nCr(cq1a-1,2)*12+nCr(permc,2)*6+nCr(cq1a,4)*24;
+}
 console.log(cq1ans);
 }else{
 cq1+="可重复数字的"+cq1b+"位数？";
