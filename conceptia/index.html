@@ -74,7 +74,7 @@ cursor:pointer}
 
 var cq1ans;
 var rep=Math.floor(Math.random() * 2);
-var prob=Math.floor(Math.random() * 2);
+var prob =0;
 var startpt=0;
 var isPer =Math.floor(Math.random()*2);
 var iss=["选","排"];
@@ -100,7 +100,9 @@ var cq1b = Math.floor(Math.random() * (cq1a-startpt-2))+2;
 if(rep==1){
 cq1b=4;
 isStr =Math.floor(Math.random()*3);
-
+if(isStr == 0 || isStr ==1){
+prob=Math.floor(Math.random() * 2);
+}
 }
 var cq1="从";
 
@@ -123,6 +125,7 @@ if(reptot >= 3){permb++;}
 if(reptot >= 2){permc++;}
 if(reptot >= 1){permd++;}
 if(isStr == 0 || isStr ==1){
+
 cq1+=reptot+"颗"+strvoc[i]+"球";
 if(i+1 != cq1a){
 cq1+="，";
