@@ -5,25 +5,42 @@
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
 <meta name="viewport" content="width=device-width">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<style>
+<style>							@keyframes run{
+					0%{
+					background:#2e8988;
+						}
+					50%{
+					background:#256868;
+
+						
+						}
+					100%{
+					background:#2e8988;
+
+						
+						}
+					}
 body{
-	background:#fff6a4;
+	background:#256868;
 	font-family: Arial;
 	font-size: 24px;
 	color:#555;
+animation: run 5s infinite;
 }	
-.Cheader{
-text-align: center;
+.Cheader{    text-align: center;
     font-size: 34px;
-    position: absolute;    color: #c12306;
-    left: 0;font-family: 'Pacifico', cursive;
-    right: 0;}
+    color: #fff6a4;
+    font-family: 'Pacifico', cursive;
+    border: solid 5px;}
+.Cheader p{
+    margin: 17px;
+    border-bottom: black;}
 .Ccon{
 position: absolute;
     top: 50%;
     left: 50%;
     right: 0;
-    background: #ff5333;
+    background: #4cbcbb;
     width: 80%;
 max-width:525px;    
 transform: translate(-50%,-50%);
@@ -32,7 +49,7 @@ transform: translate(-50%,-50%);
     font-family: Arial, Microsoft Yahei;
     font-weight: bold;}
 .ansbox{
-    background: #c12306;
+    background: #2e8988;
     margin: 12px 0;
     padding-left: 20px;
     padding: 1px 20px 1px 20px;
@@ -45,15 +62,15 @@ outline: none;
     white-space: nowrap;
 }
 .ansbuzz{
-cursor:pointer;
-    color: #c12306;
+cursor: pointer;
+    color: #2e8988;
     height: 50px;
     margin: 24px auto;
     line-height: 50px;
     width: 80%;
     background: #fff;
     text-align: center;
-    box-shadow: 7px 3px 10px #a33434;
+    box-shadow: 7px 3px 10px #2e8988;
 
 }
 .Cq .q{
@@ -289,11 +306,11 @@ chk();
 </script>
 </head>
 <body>
+
+<div class="Ccon">
 <div class="Cheader">
 	<p>Math Conceptia</p>	
 </div>
-<div class="Ccon">
-
 	<div class="Cq" id="cq1">
 <div class="q"></div>
 <div class="ansbox">
