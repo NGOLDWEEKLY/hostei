@@ -1,0 +1,38 @@
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
+var x= window.setInterval(function(){
+document.getElementById("1").src="http://www1.fyk.edu.my/course_selection/student_select_course.php?id=952";
+document.getElementById("2").src="http://www1.fyk.edu.my/course_selection/student_select_course.php?id=1066";
+},1000);
+</script><a href="http://www1.fyk.edu.my/course_selection/student_login.php?username=152086&password=18020114010169&submit=Submit" target="_blank">
+aaaaaaaaaaa</a>
+<iframe id="ss" sandbox width="100%" src="http://www1.fyk.edu.my/course_selection/student_subject_all_list.php" target="_blank">
+aaaaaaaaaaa</iframe>
+<span id="a"></span>
+<script>
+var links = [
+    'http://www1.fyk.edu.my/course_selection/student_subject_all_list.php'
+]
+
+$(links).each(function (i) {
+    var iframe = document.getElementById("ss");
+    iframe.setAttribute('t1', (new Date()).getTime());
+    iframe.setAttribute('src', links[i]);
+    iframe.onload = function () {
+        var t2 = (new Date()).getTime();
+        $("#a").html('Load Time: ' + ( t2 - parseInt(this.getAttribute('t1'))));
+    }
+    document.body.appendChild(iframe);
+});
+
+
+
+
+
+
+</script>
+
+<iframe id="1" src="http://www1.fyk.edu.my/course_selection/student_select_course.php?id=952" height="500px"></iframe>
+<iframe id="2" src="http://www1.fyk.edu.my/course_selection/student_select_course.php?id=1066" height="500px"></iframe>
+<iframe src="http://www1.fyk.edu.my/course_selection/add/student_select_course_exe.php?id=952" height="500px"></iframe>
+<iframe src="http://www1.fyk.edu.my/course_selection/add/student_select_course_exe.php?id=1066" height="500px"></iframe>
