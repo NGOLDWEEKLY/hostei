@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <body>
-<button onclick='func()' id="b" style="border:none;position:absolute;top:0;left:0;width:100%;background:red;bottom:0;cursor:pointer"></button>
+<button onclick='func()' id="b" style="border:none;position:absolute;top:0;left:0;width:100%;background:#f54e42;bottom:0;cursor:pointer"></button>
   
 <audio id='a'>
   <source src="bell.mp3" type="audio/mpeg">
@@ -10,7 +10,7 @@
 <script>
   alert("Press red button to continue.");
 function func(){  
-document.getElementById("b").backgroundColor = "green";
+document.getElementById("b").style.backgroundColor = "#c2f542";
 var x = document.getElementById("a");
 var time = setInterval(function(){
 var d = new Date();
