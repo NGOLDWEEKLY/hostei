@@ -94,4 +94,15 @@ window.location.assign("https://ngoldweekly.github.io/hostei/conceptia/uec/"+$(t
 </div>
 <div class='footer'>(c) 2020 Hostei Inc. all rights reserved</div>
 </body>
+  <script>
+ if ('serviceWorker' in navigator) {
+    console.log("Will the service worker register?");
+    navigator.serviceWorker.register('service-worker.js')
+      .then(function(reg){
+        console.log("Yes, it did.");
+     }).catch(function(err) {
+        console.log("No it didn't. This happened:", err)
+    });
+ }
+</script>
 </html>
