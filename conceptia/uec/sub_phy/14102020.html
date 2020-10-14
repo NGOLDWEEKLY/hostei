@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>UEC Conceptia</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito+Sans|Oleo+Script|Satisfy" />
+<link rel="stylesheet" href="../style.css" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="../main.js"></script>
+<script>  
+  var ans=10;
+$(document).ready(function(){
+
+  $(".flex-container").click(function(){
+var d = new Date();
+var h = d.getFullYear();
+var m = d.getMonth() +1;
+var s = d.getDate();
+window.location.assign("https://ngoldweekly.github.io/hostei/conceptia/uec/"+$(this).attr('id')+"/"+s+""+m+""+h+".html");
+  }); 
+  $(".home").click(function(){
+
+window.location.assign("https://ngoldweekly.github.io/hostei/conceptia/uec/");
+  }); 
+
+  $(".Qinp input").click(function(){
+if ($(this).val() === ans){alert('true!')}
+  });
+});
+</script>
+</head>
+<body>
+<div class='home'>主</div>
+<div class='menu'>=</div>
+<div class="Qcon" id="1" tabindex="0" style="display: block;">
+<div class="Qtit">
+<img src="q1.png">
+<span>Danny is pulling down the string such that the box is moving towards him with uniform speed. When x=___, he exerts the smallest force.
+</span>
+</div>
+<div class="Qsel">
+<div class="Qinp">
+    <input maxlength="10"/>
+    <span>m</span>
+</div>
+<div class="Qinpc">GO</div>
+</div>
+</div><div class='footer'>(c) 2020 Hostei Inc. all rights reserved</div>
+</body>
+</html>
