@@ -166,7 +166,11 @@ color:#fff
 		background:rgba(255,255,255,0);
 		border:solid 1px #fff;color:white;
 		}
-		
+.Qinp input{
+border: none;
+    background: none;
+    color: white;
+    outline: none;}
 	.Qinp span,	.Qinp inp{
 	    display:inline-block;
     outline: none;
