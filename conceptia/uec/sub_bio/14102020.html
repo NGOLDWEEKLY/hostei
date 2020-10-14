@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>UEC Conceptia</title>
+<style>
+.menu{position:absolute;z-index:11;
+top:20px;
+background:none;
+border: solid 2px #ffffff;
+border-radius: 50%;
+right:20px;
+font-size:30px;
+color:white;
+cursor:pointer;
+text-align:center;
+line-height:50px;
+width:50px;
+height:50px;}
+.footer{position:fixed;z-index:11;padding:4px;font-size:15px;font-family:Arial;
+background:rgba(0,0,0,0.3);bottom:0;left:0;right:0;color:#fff;text-align:center}
+.box{
+display:flex;
+flex-wrap:wrap;
+position:absolute;
+top:0;
+bottom:0;
+background:#000000;
+right:0;
+left:0;
+}
+.flex-container{
+color:white;
+width:50%;
+font-size:220%;
+font-family:Microsoft YaHei, Arial;
+cursor:pointer;
+height:50%;
+display:flex;
+flex-direction:row;font-weight:bold;
+align-items:center;
+box-shadow:inset 0px 0px 14px 0px rgba(0,0,0,0.4);
+}
+#sub_phy:hover,#sub_che:hover{
+opacity:0.9;
+font-size:250%;
+transition:ease 0.5s;
+}
+#sub_bio:hover,#sub_mat:hover{
+background:#9dfae9;
+font-size:250%;
+transition:ease 0.5s;
+}
+.flex-container p{
+text-align:center;
+margin:0 auto;
+}
+#sub_bio{
+background:#90e8d8;
+}
+#sub_che{
+background:#77c7b8;
+}
+#sub_phy{
+background:#77c7b8;
+}
+#sub_mat{
+background:#90e8d8;
+}
+</style>
+</head>
+<body>
+<div class='menu'>=</div>
+<div class='box'>
+<div class='flex-container' id='sub_bio'><p>生物<br>Biology</p></div>
+<div class='flex-container' id='sub_che'><p>化学<br>Chemistry</p></div>
+<div class='flex-container' id='sub_phy'><p>物理<br>Physics</p></div>
+<div class='flex-container' id='sub_mat'><p>数学<br>Math</p></div>
+</div>
+<div class='footer'>(c) 2020 Hostei Inc. all rights reserved</div>
+</body>
+</html>
