@@ -67,7 +67,19 @@ background:#77c7b8;
 background:#90e8d8;
 }
 </style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
+$(document).ready(function(){
+  $(".flex-container").click(function(){
+var d = new Date();
+var h = d.getFullYear();
+var m = d.getMonth() +1;
+var s = d.getDate();
+window.location.assign("https://ngoldweekly.github.io/hostei/conceptia/uec/"+$(this).attr('id')+""+s+""+m+""+h+".html");
+  });
+});
+
+
 </script>
 </head>
 <body>
