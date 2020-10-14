@@ -1,0 +1,30 @@
+{
+  "short_name": "高中统考",
+  "name": "高中统考",
+  "theme_color": "#4A90E2",
+  "background_color": "#F7F8F9",
+  "display": "standalone",
+  "icons": [
+    {
+      "src": "https://ngoldweekly.github.io/hostei/sub/favicon.png",
+      "type": "image/png",
+      "sizes": "48x48"
+    },
+    {
+      "src": "https://ngoldweekly.github.io/hostei/sub/favicon.png",
+      "type": "image/png",
+      "sizes": "96x96"
+    },
+    {
+      "src": "https://ngoldweekly.github.io/hostei/sub/favicon.png",
+      "type": "image/png",
+      "sizes": "144x144"
+    },
+    {
+      "src": "https://ngoldweekly.github.io/hostei/sub/favicon.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    }
+  ],
+  "start_url": "/?utm_source=launcher"
+}
