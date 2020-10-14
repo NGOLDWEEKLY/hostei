@@ -5,7 +5,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito+Sans|Oleo+Script|Satisfy" />
-<link rel="stylesheet" href="./style.css" />
+<link rel="stylesheet" href="../style.css" />
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
 $(document).ready(function(){
@@ -15,6 +15,10 @@ var h = d.getFullYear();
 var m = d.getMonth() +1;
 var s = d.getDate();
 window.location.assign("https://ngoldweekly.github.io/hostei/conceptia/uec/"+$(this).attr('id')+"/"+s+""+m+""+h+".html");
+  }); 
+  $(".home").click(function(){
+
+window.location.assign("https://ngoldweekly.github.io/hostei/conceptia/uec/");
   });
 });
 
@@ -32,7 +36,7 @@ window.location.assign("https://ngoldweekly.github.io/hostei/conceptia/uec/"+$(t
 </div>
 <div class="Qsel">
 <div class="Qinp">
-    <span contenteditable="" maxlength="5">-</span>
+    <span contenteditable="" maxlength="10">-</span>
     <span>m</span>
 </div>
 <div class="Qinpc">GO</div>
