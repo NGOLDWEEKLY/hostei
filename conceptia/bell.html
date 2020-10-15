@@ -4,26 +4,34 @@
 <button onclick='func()' id="b" style="border:none;position:absolute;top:0;left:0;width:100%;background:#f54e42;bottom:0;cursor:pointer"></button>
   
 <audio id='1'>
-  <source src="bell1.mp3" type="audio/mpeg">
+  <source src="1a.mp3" type="audio/mpeg">
 </audio>
 <audio id='2'>
-  <source src="bell2.mp3" type="audio/mpeg">
+  <source src="1b.mp3" type="audio/mpeg">
 </audio>
 <audio id='3'>
-  <source src="bell3.mp3" type="audio/mpeg">
+  <source src="1c.mp3" type="audio/mpeg">
+</audio>
+<audio id='4'>
+  <source src="1d.mp3" type="audio/mpeg">
+</audio>
+<audio id='5'>
+  <source src="1e.mp3" type="audio/mpeg">
 </audio>
 
 <script>
   alert("Press red button to continue.");
 function func(){  
 document.getElementById("b").style.backgroundColor = "#c2f542";
-var x = document.getElementById(1 + Math.floor(Math.random()*Math.floor(3)));
 var time = setInterval(function(){
+  
+  var rand=1 + Math.floor(Math.random()*Math.floor(5));alert(rand);
+var x = document.getElementById(rand);
 var d = new Date();
 var h = d.getHours();
 var m = d.getMinutes();
 var s = d.getSeconds();
-if(s==30 && ((m==35 && h==7)||(m==15 && h==8)||(m==55 && h==8)||(m==35 && h==9)||(m==50 && h==9)||(m==30 && h==10)||(m==10 && h==11)||(m==50 && h==11)||(m==20 && h==12)||(m==0 && h==13)||(m==40 && h==13))){
+if(s==30 && ((m==35 && h==7)||(m==15 && h==8)||(m==51 && h==21)||(m==55 && h==8)||(m==35 && h==9)||(m==50 && h==9)||(m==30 && h==10)||(m==10 && h==11)||(m==50 && h==11)||(m==20 && h==12)||(m==0 && h==13)||(m==40 && h==13))){
 x.play();
 
 }
