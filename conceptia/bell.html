@@ -25,13 +25,14 @@ function func(){
 document.getElementById("b").style.backgroundColor = "#c2f542";
 var time = setInterval(function(){
   
-  var rand=1 + Math.floor(Math.random()*Math.floor(5));alert(rand);
+  var rand=1 + Math.floor(Math.random()*Math.floor(5));
 var x = document.getElementById(rand);
 var d = new Date();
 var h = d.getHours();
 var m = d.getMinutes();
 var s = d.getSeconds();
-if(s==30 && ((m==35 && h==7)||(m==15 && h==8)||(m==51 && h==21)||(m==55 && h==8)||(m==35 && h==9)||(m==50 && h==9)||(m==30 && h==10)||(m==10 && h==11)||(m==50 && h==11)||(m==20 && h==12)||(m==0 && h==13)||(m==40 && h==13))){
+
+if(s==30 && ((m==35 && h==7)||(m==15 && h==8)||(m==55 && h==8)||(m==35 && h==9)||(m==50 && h==9)||(m==30 && h==10)||(m==10 && h==11)||(m==50 && h==11)||(m==20 && h==12)||(m==0 && h==13)||(m==40 && h==13))){
 x.play();
 
 }
