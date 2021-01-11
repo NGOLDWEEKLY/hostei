@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<body>
+<button onclick='func()' id="b" style="border:none;position:absolute;top:0;left:0;width:100%;background:#f54e42;bottom:0;cursor:pointer"></button>
+  
+<audio id='a'>
+  <source  id='1' src="1a.mp3" type="audio/mpeg">
+</audio>
+
+
+<script>
+  alert("Press red button to continue.");
+function func(){  
+document.getElementById("b").style.backgroundColor = "#c2f542";
+ var da = new Date();
+ var ini= da.getMinutes();
+var badass =0;
+var time = setInterval(function(){
+ 
+ var d = new Date();
+var h = d.getHours();
+var m = d.getMinutes();
+var s = d.getSeconds();
+var unk = m - ini;
+
+if(unk<0){ unk+=60;}
+  if(unk >= 20){
+var rand= Math.floor(Math.random()*Math.floor(10));
+  var ref =['1a','1b','1c','1d','1e','1f','1g','1h','1i','1j','bell'];
+if(badass==6){
+rand = 10; badass=0;
+}
+var x = document.getElementById('1').setAttribute('src',ref[rand]+'.mp3');
+var myAudio = document.getElementById('a');
+ 
+if (myAudio.duration > 0 && !myAudio.paused) {
+
+} else {
+myAudio.load();
+myAudio.play();
+myAudio.volume = 0.3;ini= d.getMinutes();badass+=1;
+}
+}
+
+}, 100);
+}
+
+</script>
+
+</body>
+</html>
