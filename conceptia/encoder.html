@@ -1,0 +1,104 @@
+<style>
+h1{color:#f12d31}
+input[type=text]{
+width:80%;
+border:none;
+margin: 2px;
+padding:8px 20px;
+}
+input[type=submit]{
+cursor:pointer;
+border:none;
+width:80%;
+background: #f12d31;
+color:#fff;
+height:30px;
+padding:5px;
+margin:5px;
+
+}
+
+#dec{
+width:800px;
+height:350px;
+background:#f2f2f2;
+border-radius:20px;
+margin:auto;
+padding:10px 5px;
+text-align:center;
+font-family:Arial;
+}
+body{font-family:Arial;}
+#trial{font-size:12px;}
+#enc{display:none;}
+</style>
+<div id='dec'>
+<h1>P202 Encoder</h1>
+<input type='text' id='ques' value='We graduated! We alive! Unbelievable. Science is like sex sure it may give some practical results but that is not why we do it.'>
+<input type='submit' value='Encrypt NOW!' onclick='encrypt()'><br>
+<div id='ans' style='display:none'>Encrypted message:<br>
+Heng: <input id='a1' type='text'><br>
+Hew: <input id='a2' type='text'><br>
+</div>
+<div id='loader' style='display:none;filter: grayscale(1);'><img width='89px' src='loader.gif'></div>
+<br><span id='trial'></span>
+<script>
+function decrypt(){
+var str1 = document.getElementById('1').value;
+var str2 = document.getElementById('2').value;
+var sol ='';
+
+for(var i=0;i<str1.length; i++){
+
+if( i>=3){
+sol+= '**';
+}else{
+sol += str1.substring(i, i+1);
+sol += str2.substring(i, i+1);
+}
+}
+ document.getElementById('loader').style.display = 'block';
+  setTimeout(function(){ document.getElementById('loader').style.display = 'none';
+ document.getElementById('ans').style.display = 'block'; 
+
+document.getElementById('sol').value = sol;
+document.getElementById('trial').innerHTML = "Want to decrypt more messages? Try <a href='index.html'>Decoder Premium</a> for free!";}, 3000);
+
+
+}
+</script></div>
+<br><div style='margin: auto;    width: fit-content'> You may also interested: <a href='decoder.html'>P202 Decoder</a></div>
+
+<script>
+function encrypt(){
+var astr = document.getElementById('ques').value;
+astr = astr.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]|\s+/g, '');
+var astr1='';
+var astr2='';
+
+for(var i=1;i<=astr.length; i++){
+
+if( i>=3){
+astr1+= '*';
+astr2+='*';
+}else{
+astr1 += astr.substring(2*i-2, 2*i-1);
+astr2 += astr.substring(2*i-1, 2*i);
+}
+}
+
+
+ document.getElementById('loader').style.display = 'block';
+  setTimeout(function(){ document.getElementById('loader').style.display = 'none';
+ document.getElementById('ans').style.display = 'block'; 
+document.getElementById('a1').value = astr1;
+document.getElementById('a2').value = astr2;
+
+document.getElementById('trial').innerHTML = "Want to decrypt more messages? Try <a href='https://www.cimbclicks.com.my/clicks/#/'>Encoder Premium</a> for free!";}, 3000);
+
+
+
+
+
+}
+</script>
