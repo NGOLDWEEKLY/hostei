@@ -15,7 +15,7 @@ var canvas = document.querySelector("canvas");
 	//w-width,h-height
     canvas.style.display = "none";
 
-    window.navigator.mediaDevices.getUserMedia({   video: {width: {exact: 1920}, height: {exact: 1080}} })
+    window.navigator.mediaDevices.getUserMedia({   video: {width: {exact: 1280}, height: {exact: 720}} })
         .then(stream => {
             video.srcObject = stream;
             video.onloadedmetadata = (e) => {
