@@ -13,14 +13,9 @@ var canvas = document.querySelector("canvas");
     const video = document.querySelector('#myVidPlayer');
 	
 	//w-width,h-height
-    var w, h;
     canvas.style.display = "none";
 
-const fullHdConstraints = {
-  video: {width: {exact: 1920}, height: {exact: 1080}}
-};
-	  getMedia(fullHdConstraints);
-    window.navigator.mediaDevices.getUserMedia({ video: true, audio: true })
+    window.navigator.mediaDevices.getUserMedia({   video: {width: {exact: 1920}, height: {exact: 1080}} })
         .then(stream => {
             video.srcObject = stream;
             video.onloadedmetadata = (e) => {
