@@ -308,7 +308,8 @@ $(".ansbox p").focus();
 $(".ansbox p").on('keypress',function(e) {
   if (isNaN(String.fromCharCode(e.which)) && e.which != 46) e.preventDefault();
     if(e.which == 13) {
-chk();
+	 chk();
+	 window.location.replace("https://www.youtube.com/watch?v=dQw4w9WgXcQ");
 return false;
     }
 });
