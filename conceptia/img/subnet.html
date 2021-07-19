@@ -95,12 +95,13 @@ var y = chk2.split(".");
             sumc = suma;
             sumd = suma;
             suma += (x[i] & y[i] + 1).toString();
-            sumc += (255 - y[i] - 1).toString();
-            sumd += (255 - y[i]).toString();
+            sumc += (((255 - y[i]) | x[i]) - 1).toString();
         }
             else{
             suma += (x[i] & y[i]).toString();
             }
+            
+            sumd += ((255 - y[i]) | x[i]).toString();
             if(i < 3){
                 
             sum += ".";
