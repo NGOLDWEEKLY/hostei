@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+    <meta name="viewport" content="width=device-width">
+    <script>
+        var ip = 192168172001;
+
+
+
+    
+    </script>
+    <style>
+        body {
+            background-color: #efefef;
+            font-family: Arial;
+        }
+
+        #header,
+        #space,
+        #custom {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            flex-wrap: wrap;
+            align-items: center;
+            height: 104px;
+            width: 657px;
+            margin: auto;
+        }
+
+        #space,
+        #custom {
+            flex-direction: row;
+            height: 350px;
+}
+
+        .subcol {
+            width: 500px;
+        }
+
+        #header .submenu {
+
+            width: 120px;
+            height: 40px;
+            margin: 3px;
+            background: #dedede;
+            color: #000;
+            border: solid 0.2px #ccc;
+            text-align: center;
+            padding: 2px;
+            cursor: pointer;
+
+        }
+        a{
+            color: #000;
+            text-decoration: none;
+        }
+        .subcol.addr input{
+            width:300px;
+        }
+
+        #header .submenu.active {
+            background: #a2d2d2;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="header">
+        <div class="submenu"><span>IPv6 Abbreviation</span></div>
+        <div class="submenu"><span>IPv6 EUI-64 Identifiers</span></div>
+        <div class="submenu"><span>MAC/Location Search</span></div>
+        <div class="submenu"><span>Conversion</span></div>
+        <div class="submenu"><span>Classes</span></div>
+        <a href="subnet.html"><div class="submenu active"><span>Subnet</span></div></a>
+        <div class="submenu"><span>CIDR</span></div>
+        <a href="index.html"><div class="submenu">WildCard</span></div></a>
+        <div class="submenu"><span>VLSM</span></div>
+        <div class="submenu"><span>Supernetting</span></div>
+    </div>
+    <script>
+
+        function calc(){
+            var chk = document.getElementById("ip").value;
+            var chk2 = document.getElementById("subnet").value;
+            var x = chk.split(".");
+var y = chk2.split(".");
+        var sum = "", suma="",sumc="";
+        for(var i =0; i <4; i++){
+            sum += (x[i] & y[i]).toString();
+            if(i == 3){
+            sumc = suma;
+            sumd = suma;
+            suma += (x[i] & y[i] + 1).toString();
+            sumc += (255 - y[i] - 1).toString();
+            sumd += (255 - y[i]).toString();
+        }
+            else{
+            suma += (x[i] & y[i]).toString();
+            }
+            if(i < 3){
+                
+            sum += ".";
+            suma += ".";
+            }
+        }
+            document.getElementById("netAddr").value = sum;
+            document.getElementById("hostAddr").value = suma;
+            document.getElementById("lastAddr").value = sumc;
+            document.getElementById("broadAddr").value = sumd;
+        }
+        alert(sum);
+        alert(suma);
+    </script>
+    <div id="space">
+        <div class="subcol">
+            <p><b>Subnet Mask</b></p>
+            IP Address:<br>
+            <input type="text" id="ip" value="172.16.0.1"><br><br>
+            Subnet Mask:<br>
+            <input type="text" id="subnet" value="255.255.255.240">
+            
+            <button onclick="calc()">Calculate</button>
+        </div>
+        <div class="subcol"><br>
+            Network Address:
+             <input type="text" id="netAddr" value="" disabled><br>
+             First usable host IP:
+              <input type="text" id="hostAddr" value="" disabled><br>
+              Last usable host IP:
+               <input type="text" id="lastAddr" value="" disabled><br>
+               Broadcast address:
+                <input type="text" id="broadAddr" value="" disabled>
+        </div>
+    </div>
+
+</body>
+
+</html>

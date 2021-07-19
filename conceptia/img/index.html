@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+    <meta name="viewport" content="width=device-width">
+    <script>
+        var ip = 192168172001;
+
+
+
+    
+    </script>
+    <style>
+        body {
+            background-color: #efefef;
+            font-family: Arial;
+        }
+
+        #header,
+        #space,
+        #custom {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            flex-wrap: wrap;
+            align-items: center;
+            height: 104px;
+            width: 657px;
+            margin: auto;
+        }
+
+        #space,
+        #custom {
+            flex-direction: row;
+            height: 350px;
+}
+
+        .subcol {
+            width: 500px;
+        }
+
+        #header .submenu {
+
+            width: 120px;
+            height: 40px;
+            margin: 3px;
+            background: #dedede;
+            color: #000;
+            border: solid 0.2px #ccc;
+            text-align: center;
+            padding: 2px;
+            cursor: pointer;
+
+        }
+        a{
+            color: #000;
+            text-decoration: none;
+        }
+        .subcol.addr input{
+            width:300px;
+        }
+
+        #header .submenu.active {
+            background: #a2d2d2;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="header">
+        <div class="submenu"><span>IPv6 Abbreviation</span></div>
+        <div class="submenu"><span>IPv6 EUI-64 Identifiers</span></div>
+        <div class="submenu"><span>MAC/Location Search</span></div>
+        <div class="submenu"><span>Conversion</span></div>
+        <div class="submenu"><span>Classes</span></div>
+        <a href="subnet.html"><div class="submenu"><span>Subnet</span></div></a>
+        <div class="submenu"><span>CIDR</span></div>
+        <div class="submenu active">WildCard</span></div>
+        <div class="submenu"><span>VLSM</span></div>
+        <div class="submenu"><span>Supernetting</span></div>
+    </div>
+    <div id="space">
+        <div class="subcol">
+            <p><b>Switch Access Control List IP</b></p>
+            Select Option:
+            <select><option>WildMask List</option><option>Custom WildMask</option></select>
+        </div>
+        <div class="subcol">
+            IP Address:<br>
+            <input type="text" value="172.16.0.1">
+        </div>
+        <div class="subcol"><br>
+            Wildcard
+            Mask:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Custom
+            Mask:<br>
+            <input type="text" value="172.16.0.1">
+            &nbsp;&nbsp;&nbsp;
+            <input type="text" value="0.0.255.254">
+        </div>
+        <div class="subcol">
+            <br>IP Address Range<br>
+            <input type="text" value="172.16.0.1">
+            to <input type="text" value="0.0.255.254">
+        </div>
+        <div class="subcol">
+            <button>Check Wildcard</button>
+        </div>
+    </div>
+    <div id="custom">
+
+        <div class="subcol">
+            <p><b>Check Custom Wildcard Mask</b></p>
+        </div>
+        <div class="subcol">
+            ACL Network Address:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IP
+            Address:<br>
+            <input type="text" value="172.16.0.1">&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="text" value="0.0.255.254">
+        </div>
+        <div class="subcol">
+            <br>Wildcard Mask<br>
+            <input type="text" value="172.16.0.1">&nbsp;&nbsp;&nbsp;&nbsp;
+            <button>Check Accessible</button>
+        </div>
+        <div class="subcol addr">
+            <br>IP Address bit&nbsp;&nbsp;&nbsp;
+            <input type="text" value="11111111 11111111 11111111 11111111" disabled><br>
+            Wildcard bit&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="text" value="11111111 11111111 11111111 11111111" disabled><br>
+            Accessible bit&nbsp;&nbsp;&nbsp;
+            <input type="text" value="11111111 11111111 11111111 11111111" disabled><br>
+            IP Address 2 bit
+            <input type="text" value="11111111 11111111 11111111 11111111" disabled><br>
+            <p>X - usable bit</p>
+            IP Address able to access ACL Support: Yes
+        </div>
+    </div>
+</body>
+
+</html>
