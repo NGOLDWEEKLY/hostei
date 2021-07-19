@@ -92,20 +92,19 @@ var y = chk2.split(".");
         for(var i =0; i <4; i++){
             sum += (x[i] & y[i]).toString();
             if(i == 3){
-            sumc = suma;
-            sumd = suma;
+            sumc = sumd;
             suma += (x[i] & y[i] + 1).toString();
             sumc += (((255 - y[i]) | x[i]) - 1).toString();
         }
             else{
             suma += (x[i] & y[i]).toString();
             }
-            
             sumd += ((255 - y[i]) | x[i]).toString();
             if(i < 3){
                 
             sum += ".";
             suma += ".";
+            sumd += ".";
             }
         }
             document.getElementById("netAddr").value = sum;
@@ -113,8 +112,6 @@ var y = chk2.split(".");
             document.getElementById("lastAddr").value = sumc;
             document.getElementById("broadAddr").value = sumd;
         }
-        alert(sum);
-        alert(suma);
     </script>
     <div id="space">
         <div class="subcol">
