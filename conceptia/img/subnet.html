@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 
@@ -130,24 +131,46 @@ var y = chk2.split(".");
     </script>
     <div id="space">
         <div class="subcol">
-            <p><b>Subnet Mask</b></p>
-            IP Address:<br>
-            <input type="text" id="ip" value="172.16.0.1"><br><br>
-            Subnet Mask:<br>
+            <p><b>Subnet Input:</b></p>
+            Select Network Class:<br>
+            <input type="radio" id="CleassA"><label for="CleassA">Class A</label>
+            <input type="radio" id="CleassB"><label for="CleassB">Class B</label>
+            <input type="radio" id="CleassC"><label for="CleassC">Class C</label><br><br>
+            IP Address:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Subnet Mask:<br>
+            <input type="text" id="ip" value="172.16.0.1">&nbsp;&nbsp;
             <input type="text" id="subnet" value="255.255.255.240">/
-            <input type="text" disabled id="subnetno" value="28" style="width:50px;">
             
-            <button onclick="calc()">Calculate</button>
+            <input type="text" disabled id="subnetno" value="28" style="width:50px;"><br><br>Subnet Bits:&nbsp;&nbsp;Max Subnets:&nbsp;&nbsp;&nbsp;&nbsp;Host Bits: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Max Hosts:<br>
+            <select><option>32</option><option>31</option><option>30</option></select>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" disabled id="maxsubnet" value="419304" style="width:50px;">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<select><option>2</option><option>31</option><option>30</option></select>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" disabled id="maxhost" value="2" style="width:50px;">
+           <br><br>IP Address Range:<br>
+           <input type="text" id="ipmin" value="1.0.0.1">&nbsp;to
+           <input type="text" id="ipmax" value="172.255.0.1">&nbsp;&nbsp;
+           <br> 
+           <br><button onclick="calc()">Check</button>
         </div>
-        <div class="subcol"><br>
-            Network Address:
+        <div class="subcol">
+            <p><b>Subnet Results:</b></p>
+            <b>Bits</b><br><br>
+            IP Address Bit (IPv4):  &nbsp;&nbsp;&nbsp;&nbsp;<input type="text" id="ipAddrbit" value="" disabled><br>
+            
+            Subnet Mask Bit (IPv4):  <input type="text" id="netmaskAddr" value="" disabled><br>
+            
+            Usable Bit (IPv4): &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="text" id="usablebit" value="" disabled><br>
+            <br><br>
+            <b>ID and Hosts for 1st Subnet:</b><br>
+            Network ID:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
              <input type="text" id="netAddr" value="" disabled><br>
-             First usable host IP:
-              <input type="text" id="hostAddr" value="" disabled><br>
-              Last usable host IP:
-               <input type="text" id="lastAddr" value="" disabled><br>
-               Broadcast address:
-                <input type="text" id="broadAddr" value="" disabled>
+               Broadcast ID:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <input type="text" id="broadAddr" value="" disabled><br>
+                Usable host:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <input type="text" id="usehostAddr" value="" disabled><br>
+                First usable host:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <input type="text" id="hostAddr" value="" disabled><br>
+                Last usable host:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                 <input type="text" id="lastAddr" value="" disabled><br>
         </div>
     </div>
 
