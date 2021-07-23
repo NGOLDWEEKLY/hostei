@@ -83,12 +83,25 @@
     </div>
     <script>
 
+function decTobin(q){
+        var ans = "";
+        var sum = 0;
+        while (q>=1){
+        ans = q % 2 + ans;
+        q /= 2;
+        q=parseInt(q);
+        }
+        for(var i =0;i<ans.length;i++)
+        sum+=parseInt(ans[i]);
+		return sum;
+}
         function calc(){
             var chk = document.getElementById("ip").value;
             var chk2 = document.getElementById("subnet").value;
             var x = chk.split(".");
 var y = chk2.split(".");
         var sum = "", suma="",sumc="",sumd="";
+            var sume = 0;
         for(var i =0; i <4; i++){
             sum += (x[i] & y[i]).toString();
             if(i == 3){
@@ -100,6 +113,7 @@ var y = chk2.split(".");
             suma += (x[i] & y[i]).toString();
             }
             sumd += ((255 - y[i]) | x[i]).toString();
+            sume += decTobin(y[i]);
             if(i < 3){
                 
             sum += ".";
@@ -111,6 +125,7 @@ var y = chk2.split(".");
             document.getElementById("hostAddr").value = suma;
             document.getElementById("lastAddr").value = sumc;
             document.getElementById("broadAddr").value = sumd;
+            document.getElementById("subnetno").value = sume;
         }
     </script>
     <div id="space">
@@ -119,7 +134,8 @@ var y = chk2.split(".");
             IP Address:<br>
             <input type="text" id="ip" value="172.16.0.1"><br><br>
             Subnet Mask:<br>
-            <input type="text" id="subnet" value="255.255.255.240">
+            <input type="text" id="subnet" value="255.255.255.240">/
+            <input type="text" disabled id="subnetno" value="28" style="width:50px;">
             
             <button onclick="calc()">Calculate</button>
         </div>
