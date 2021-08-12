@@ -1,94 +1,146 @@
-<style>
-h1{color:#f12d31}
-input[type=text]{
-width:80%;
-border:none;
-margin: 2px;
-padding:8px 20px;
-}
-input[type=submit]{
-cursor:pointer;
-border:none;
-width:80%;
-background: #f12d31;
-color:#fff;
-height:30px;
-padding:5px;
-margin:5px;
+<video id="myVidPlayer" controls muted autoplay></video>
 
-}
+<button onclick="snapshot()" >Snapshot</button>
 
-#dec{
-width:800px;
-height:350px;
-background:#f2f2f2;
-border-radius:20px;
-margin:auto;
-padding:10px 5px;
-text-align:center;
-font-family:Arial;
-}
-body{font-family:Arial;}
-#trial{font-size:12px;}
-#enc{display:none;}
-</style>
-<div id='dec'>
-<h1>P202 Decoder</h1>
-Heng : <input id='1' type='text' value='WgautdelvUblealSinesieesrimyieoerciarslsutainthwdi'><br>
-Hew  : <input id='2' type='text' value ='erdaeWaieneivbececilksxuetagvsmpatcleutbthtsowyeot'><br>
-<input type='submit' value='Decrypt NOW!'  onclick='decrypt()'><br><br>
-<div id='ans' style='display:none'><b>Decrypted message:</b><br><input type='text' id='sol'></div>
-<div id='loader' style='display:none;filter: grayscale(1);'><img width='89px' src='loader.gif'></div>
-<br><span id='trial'></span>
+<div class="mycanvas">
+    <h6>Captured snapshot</h6>
+    <canvas></canvas>
+</div>
 <script>
-function decrypt(){
-var str1 = document.getElementById('1').value;
-var str2 = document.getElementById('2').value;
-var sol ='';
+var canvas = document.querySelector("canvas");
+    var context = canvas.getContext("2d");
+    const video = document.querySelector('#myVidPlayer');
 
-for(var i=0;i<str1.length; i++){
+	//w-width,h-height
+    var w, h;
+    canvas.style.display = "none";
 
-if( i>=3){
-sol+= '**';
-}else{
-sol += str1.substring(i, i+1);
-sol += str2.substring(i, i+1);
-}
-}
- document.getElementById('loader').style.display = 'block';
-  setTimeout(function(){ document.getElementById('loader').style.display = 'none';
- document.getElementById('ans').style.display = 'block'; 
+	//new
+    function snapshot(){
+        context.fillRect(0, 0, w, h);
+        context.drawImage(video, 0, 0, w, h);
+        canvas.style.display = "block";
+    }
 
-document.getElementById('sol').value = sol;
-document.getElementById('trial').innerHTML = "Want to decrypt more messages? Try <a href='https://www.cimbclicks.com.my/clicks/#/'>Decoder Premium</a> for free!";}, 3000);
+    window.navigator.mediaDevices.getUserMedia({ video: {width: {exact: 1280}, height: {exact: 720}} })
+        .then(stream => {
+            video.srcObject = stream;
+            video.onloadedmetadata = (e) => {
+                video.play();
 
+                //new
+                w = video.videoWidth;
+                h = video.videoHeight;
 
-}
-</script></div>
-<br><div style='margin: auto;    width: fit-content'> You may also interested: <a href='encoder.html'>P202 Encoder</a></div>
-<div id='enc'>
-
-<h1>P202 Encoder</h1>
-<input type='text' id='ques' value='We graduated! We alive! Unbelievable. Science is like sex sure it may give some practical results but that is not why we do it.'>
-<input type='submit' onclick='encrypt()'><br>
-Encrypted:<br>
-Heng: <input id='a1' type='text'><br>
-Hew: <input id='a2' type='text'><br>
-
+                canvas.width = w;
+                canvas.height = h;
+            };
+    	})
+        .catch(error => {
+        	alert('You have to enable the mike and the camera');
+    	});
+</script>
 <script>
-function encrypt(){
-var astr = document.getElementById('ques').value;
-astr = astr.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]|\s+/g, '');
-var astr1='';
-var astr2='';
 
-for(var i=1;i<=astr.length; i++){
-astr1 += astr.substring(2*i-2, 2*i-1);
-astr2 += astr.substring(2*i-1, 2*i);
 
+const videoElement = document.querySelector('video');
+const videoSelect = document.querySelector('select#videoSource');
+const selectors = [audioInputSelect, audioOutputSelect, videoSelect];
+
+audioOutputSelect.disabled = !('sinkId' in HTMLMediaElement.prototype);
+
+function gotDevices(deviceInfos) {
+  // Handles being called several times to update labels. Preserve values.
+  const values = selectors.map(select => select.value);
+  selectors.forEach(select => {
+    while (select.firstChild) {
+      select.removeChild(select.firstChild);
+    }
+  });
+  for (let i = 0; i !== deviceInfos.length; ++i) {
+    const deviceInfo = deviceInfos[i];
+    const option = document.createElement('option');
+    option.value = deviceInfo.deviceId;
+    if (deviceInfo.kind === 'audioinput') {
+      option.text = deviceInfo.label || `microphone ${audioInputSelect.length + 1}`;
+      audioInputSelect.appendChild(option);
+    } else if (deviceInfo.kind === 'audiooutput') {
+      option.text = deviceInfo.label || `speaker ${audioOutputSelect.length + 1}`;
+      audioOutputSelect.appendChild(option);
+    } else if (deviceInfo.kind === 'videoinput') {
+      option.text = deviceInfo.label || `camera ${videoSelect.length + 1}`;
+      videoSelect.appendChild(option);
+    } else {
+      console.log('Some other kind of source/device: ', deviceInfo);
+    }
+  }
+  selectors.forEach((select, selectorIndex) => {
+    if (Array.prototype.slice.call(select.childNodes).some(n => n.value === values[selectorIndex])) {
+      select.value = values[selectorIndex];
+    }
+  });
 }
-document.getElementById('a1').value = astr1;
-document.getElementById('a2').value = astr2;
-console.log(astr1);
-console.log(astr2);}
-</script></div>
+
+navigator.mediaDevices.enumerateDevices().then(gotDevices).catch(handleError);
+
+// Attach audio output device to video element using device/sink ID.
+function attachSinkId(element, sinkId) {
+  if (typeof element.sinkId !== 'undefined') {
+    element.setSinkId(sinkId)
+        .then(() => {
+          console.log(`Success, audio output device attached: ${sinkId}`);
+        })
+        .catch(error => {
+          let errorMessage = error;
+          if (error.name === 'SecurityError') {
+            errorMessage = `You need to use HTTPS for selecting audio output device: ${error}`;
+          }
+          console.error(errorMessage);
+          // Jump back to first output device in the list as it's the default.
+          audioOutputSelect.selectedIndex = 0;
+        });
+  } else {
+    console.warn('Browser does not support output device selection.');
+  }
+}
+
+function changeAudioDestination() {
+  const audioDestination = audioOutputSelect.value;
+  attachSinkId(videoElement, audioDestination);
+}
+
+function gotStream(stream) {
+  window.stream = stream; // make stream available to console
+  videoElement.srcObject = stream;
+  // Refresh button list in case labels have become available
+  return navigator.mediaDevices.enumerateDevices();
+}
+
+function handleError(error) {
+  console.log('navigator.MediaDevices.getUserMedia error: ', error.message, error.name);
+}
+
+function start() {
+  if (window.stream) {
+    window.stream.getTracks().forEach(track => {
+      track.stop();
+    });
+  }
+  const videoSource = videoSelect.value;
+  const constraints = {
+    video: {deviceId: videoSource ? {exact: videoSource} : undefined}
+  };
+  navigator.mediaDevices.getUserMedia(constraints).then(gotStream).then(gotDevices).catch(handleError);
+}
+
+
+videoSelect.onchange = start;
+
+start();
+
+
+</script>
+
+    <div class="select">
+        <label for="videoSource">Video source: </label><select id="videoSource"></select>
+    </div>
