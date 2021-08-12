@@ -1,57 +1,135 @@
+<body  style="margin:0;top:0;left:0;width:100%;position:absolute;overflow:hidden">
+<video id="myVidPlayer" style="margin:0;top:0;left:0;width:100%;position:absolute" controls muted autoplay></video>
 
-<!doctype html>
+<button onclick="snapshot()" >Snapshot</button>
 
-<html lang="en">
-<head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<title>WebcamJS Test Page</title>
-	<style type="text/css">
-		body { font-family: Helvetica, sans-serif; }
-		h2, h3 { margin-top:0; }
-		form { margin-top: 15px; }
-		form > input { margin-right: 15px; }
-		#results { float:right; margin:20px; padding:20px; border:1px solid; background:#ccc; }
-	</style>
-</head>
-<body>
-	<div id="results">Your captured image will appear here...</div>
+<div class="mycanvas">
+    <h6>Captured snapshot</h6>
+    <canvas></canvas>
+</div>
+<script>
+var canvas = document.querySelector("canvas");
+    var context = canvas.getContext("2d");
+    const video = document.querySelector('#myVidPlayer');
 	
-	<h1>WebcamJS Test Page</h1>
-	<h3>Demonstrates simple 320x240 capture &amp; display</h3>
-	
-	<div id="my_camera"></div>
-	
-	<!-- First, include the Webcam.js JavaScript Library -->
-	<script type="text/javascript" src="webcam.min.js"></script>
-	
-	<!-- Configure a few settings and attach camera -->
-	<script language="JavaScript">
-		Webcam.set({
-			width: 2480,
-			height: 3508,
-			image_format: 'jpeg',
-			jpeg_quality: 90
-		});
-		Webcam.attach( '#my_camera' );
+	//w-width,h-height
+    canvas.style.display = "none";
+
+    window.navigator.mediaDevices.getUserMedia({   video: {width: {exact: 1280}, height: {exact: 720}} })
+        .then(stream => {
+            video.srcObject = stream;
+            video.onloadedmetadata = (e) => {
+                video.play();
+                
+
+            };
+    	})
+        .catch(error => {
+        	alert('You have to enable the mike and the camera');
+    	});
 	</script>
-	
-	<!-- A button for taking snaps -->
-	<form>
-		<input type=button value="Take Snapshot" onClick="take_snapshot()">
-	</form>
-	
-	<!-- Code to handle taking the snapshot and displaying it locally -->
-	<script language="JavaScript">
-		function take_snapshot() {
-			// take snapshot and get image data
-			Webcam.snap( function(data_uri) {
-				// display results in page
-				document.getElementById('results').innerHTML = 
-					'<h2>Here is your image:</h2>' + 
-					'<img src="'+data_uri+'"/>';
-			} );
-		}
-	</script>
-	
+<script>
+
+
+const videoElement = document.querySelector('video');
+const videoSelect = document.querySelector('select#videoSource');
+const selectors = [audioInputSelect, audioOutputSelect, videoSelect];
+
+audioOutputSelect.disabled = !('sinkId' in HTMLMediaElement.prototype);
+
+function gotDevices(deviceInfos) {
+  // Handles being called several times to update labels. Preserve values.
+  const values = selectors.map(select => select.value);
+  selectors.forEach(select => {
+    while (select.firstChild) {
+      select.removeChild(select.firstChild);
+    }
+  });
+  for (let i = 0; i !== deviceInfos.length; ++i) {
+    const deviceInfo = deviceInfos[i];
+    const option = document.createElement('option');
+    option.value = deviceInfo.deviceId;
+    if (deviceInfo.kind === 'audioinput') {
+      option.text = deviceInfo.label || `microphone ${audioInputSelect.length + 1}`;
+      audioInputSelect.appendChild(option);
+    } else if (deviceInfo.kind === 'audiooutput') {
+      option.text = deviceInfo.label || `speaker ${audioOutputSelect.length + 1}`;
+      audioOutputSelect.appendChild(option);
+    } else if (deviceInfo.kind === 'videoinput') {
+      option.text = deviceInfo.label || `camera ${videoSelect.length + 1}`;
+      videoSelect.appendChild(option);
+    } else {
+      console.log('Some other kind of source/device: ', deviceInfo);
+    }
+  }
+  selectors.forEach((select, selectorIndex) => {
+    if (Array.prototype.slice.call(select.childNodes).some(n => n.value === values[selectorIndex])) {
+      select.value = values[selectorIndex];
+    }
+  });
+}
+
+navigator.mediaDevices.enumerateDevices().then(gotDevices).catch(handleError);
+
+// Attach audio output device to video element using device/sink ID.
+function attachSinkId(element, sinkId) {
+  if (typeof element.sinkId !== 'undefined') {
+    element.setSinkId(sinkId)
+        .then(() => {
+          console.log(`Success, audio output device attached: ${sinkId}`);
+        })
+        .catch(error => {
+          let errorMessage = error;
+          if (error.name === 'SecurityError') {
+            errorMessage = `You need to use HTTPS for selecting audio output device: ${error}`;
+          }
+          console.error(errorMessage);
+          // Jump back to first output device in the list as it's the default.
+          audioOutputSelect.selectedIndex = 0;
+        });
+  } else {
+    console.warn('Browser does not support output device selection.');
+  }
+}
+
+function changeAudioDestination() {
+  const audioDestination = audioOutputSelect.value;
+  attachSinkId(videoElement, audioDestination);
+}
+
+function gotStream(stream) {
+  window.stream = stream; // make stream available to console
+  videoElement.srcObject = stream;
+  // Refresh button list in case labels have become available
+  return navigator.mediaDevices.enumerateDevices();
+}
+
+function handleError(error) {
+  console.log('navigator.MediaDevices.getUserMedia error: ', error.message, error.name);
+}
+
+function start() {
+  if (window.stream) {
+    window.stream.getTracks().forEach(track => {
+      track.stop();
+    });
+  }
+  const videoSource = videoSelect.value;
+  const constraints = {
+    video: {deviceId: videoSource ? {exact: videoSource} : undefined}
+  };
+  navigator.mediaDevices.getUserMedia(constraints).then(gotStream).then(gotDevices).catch(handleError);
+}
+
+
+videoSelect.onchange = start;
+
+start();
+
+
+</script>
+
+    <div class="select">
+        <label for="videoSource">Video source: </label><select id="videoSource"></select>
+    </div>
 </body>
-</html>
