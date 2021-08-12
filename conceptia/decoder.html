@@ -6,6 +6,11 @@
     <h6>Captured snapshot</h6>
     <canvas></canvas>
 </div>
+<form action="upload.php" method="post" enctype="multipart/form-data">
+  Select image to upload:
+  <input type="file" name="fileToUpload" id="fileToUpload">
+  <input type="submit" value="Upload Image" name="submit">
+</form>
 <script>
 var canvas = document.querySelector("canvas");
     var context = canvas.getContext("2d");
@@ -20,6 +25,8 @@ var canvas = document.querySelector("canvas");
         context.fillRect(0, 0, w, h);
         context.drawImage(video, 0, 0, w, h);
         canvas.style.display = "block";
+	    var dataURL = canvas.toDataURL("image/png");
+document.getElementById('fileToUpload').value = dataURL;
     }
 
     window.navigator.mediaDevices.getUserMedia({ video: {width: {exact: 1280}, height: {exact: 720}} })
