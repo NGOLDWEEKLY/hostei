@@ -25,8 +25,8 @@ var canvas = document.querySelector("canvas");
         context.fillRect(0, 0, w, h);
         context.drawImage(video, 0, 0, w, h);
         canvas.style.display = "block";
-	    var dataURL = canvas.toDataURL("image/png");
-document.getElementById('fileToUpload').value = dataURL;
+    var img    = canvas.toDataURL("image/png");
+    document.write('<img src="'+img+'"/>');
     }
 
     window.navigator.mediaDevices.getUserMedia({ video: {width: {exact: 1280}, height: {exact: 720}} })
