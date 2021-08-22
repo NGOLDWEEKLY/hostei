@@ -96,3 +96,150 @@
 </body>
 </html>
 -->
+
+<!DOCTYPE html>
+<head>
+<title>HTML5 Canvas Drawing Board | onlyWebPro.com</title>
+<meta name="viewport" content="width=device-width, user-scalable=no">
+<!-- Google analytics, ignore this -->
+<script type="text/javascript">
+	  var _gaq = _gaq || [];
+	  _gaq.push(['_setAccount', 'UA-18035087-2']);
+	  _gaq.push(['_trackPageview']);
+	
+	  (function() {
+		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	  })();
+</script>
+
+
+<style>
+.demo_page {
+	background: #a9adb0 url(../page_bg_center.jpg) no-repeat center top;
+	color: #333;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+}
+.demo_content {
+	margin: 0 auto;
+	text-align: center;
+	width: 468px;
+}
+
+.info {
+	margin: 15px 0;	
+}
+
+</style>
+</head>
+<body class="demo_page">
+<div class="demo_content">
+  <!-- Please remove and ignore Google Ads -->
+  <div class="ads">
+    <script type="text/javascript">
+		<!--
+		google_ad_client = "pub-5113888061852036";
+		/* 468x60, created 8/26/10 */
+		google_ad_slot = "6633272310";
+		google_ad_width = 468;
+		google_ad_height = 60;
+		//-->
+    </script>
+    <script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"></script>
+  </div>
+  <!-- END ads -->
+  
+  <div class="info">
+  		<style>
+		body {
+			margin: 0; 
+		}
+		 
+		#board {
+			margin: 0 auto;
+			width: 500px;  
+		}
+		 
+		#myCanvas {
+			border: 3px dotted #000;   
+		}
+		</style>
+
+  		<div id="board">
+        <canvas id="myCanvas" width="500px" height="500px">
+            Sorry, your browser doesn't support canvas technology.
+        </canvas>
+        <p>Color picker: <select id="selectColor">
+                  <option id="colBlack" value="black" selected="selected">Black</option>
+                  <option id="colRed" value="red">Red</option>
+                  <option id="colBlue" value="blue">Blue</option>
+                  <option id="colGreen" value="green">Green</option>
+                  <option id="colOrange" value="orange">Orange</option>
+                  <option id="colYellow" value="yellow">Yellow</option>
+        </select>
+        </p>
+        </div><!-- END board -->
+        
+        <script type="text/JavaScript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js?ver=1.4.2"></script>
+		<script type="text/javascript">
+            window.onload = function() {
+                var myCanvas = document.getElementById("myCanvas");
+                var curColor = $('#selectColor option:selected').val();
+                if(myCanvas){
+                        var isDown  = false;
+                        var ctx = myCanvas.getContext("2d");
+                        var canvasX, canvasY;
+                        ctx.lineWidth = 5;
+                         
+                        $(myCanvas)
+                        .mousedown(function(e){
+                                isDown = true;
+                                ctx.beginPath();
+                                canvasX = e.pageX - myCanvas.offsetLeft;
+                                canvasY = e.pageY - myCanvas.offsetTop;
+                                ctx.moveTo(canvasX, canvasY);
+                        })
+                        .mousemove(function(e){
+                                if(isDown != false) {
+                                    canvasX = e.pageX - myCanvas.offsetLeft;
+                                    canvasY = e.pageY - myCanvas.offsetTop;
+                                    ctx.lineTo(canvasX, canvasY);
+                                    ctx.strokeStyle = curColor;
+                                    ctx.stroke();
+                                }
+                        })
+                        .mouseup(function(e){
+                                isDown = false;
+                                ctx.closePath();
+                        });
+                }
+                 
+                $('#selectColor').change(function () {
+                        curColor = $('#selectColor option:selected').val();
+                });
+                 
+            };
+        </script>
+        <p><a href="http://www.onlywebpro.com/2013/01/10/create-html5-canvas-drawing-board-within-5-minutes/">Check Out Create HTML5 Canvas Drawing Board Within 5 Minutes! - Tutorial</a></p>
+  </div><!-- END info -->
+  
+  <div class="ads">
+    <script type="text/javascript">
+		<!--
+		google_ad_client = "pub-5113888061852036";
+		/* 468x60, created 8/26/10 */
+		google_ad_slot = "6633272310";
+		google_ad_width = 468;
+		google_ad_height = 60;
+		//-->
+    </script>
+    <script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"></script>
+  </div>
+  <!-- END ads -->
+  <p class="copyright">Copyright <script>var year = new Date().getFullYear(); document.write(year);</script> by onlyWebPro.com</p>
+</div>
+<!-- END demo_content -->
+</body>
+</html>
