@@ -1,1 +1,346 @@
-Not here :(
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+<meta name="title" content="Math Conceptia" />
+	
+<meta property="og:site_name" content="Math Conceptia" />
+<meta name="description" content="Let us bring you to your amazing childhood life!" />
+<meta property="og:type" content="website" />
+<meta name="keywords" content="math, animation" />
+<meta property="og:title" content="Math Conceptia" />
+<meta property="og:description" content="Let us bring you to your amazing childhood life!" />
+<meta property="og:image" content="img/meta.png" />
+<meta name="MobileOptimized" content="width" />
+<meta name="HandheldFriendly" content="true" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fredoka+One|Quicksand|Roboto|Oleo+Script" />
+ 
+
+
+<link href="https://fonts.googleapis.com/css?family=Pacifico&display=swap" rel="stylesheet">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+<meta name="viewport" content="width=device-width">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<style>							@keyframes run{
+					0%{
+					background:#2e8988;
+						}
+					50%{
+					background:#256868;
+
+						
+						}
+					100%{
+					background:#2e8988;
+
+						
+						}
+					}
+body{
+	background:#256868;
+	font-family: Arial;
+	font-size: 24px;
+	color:#555;
+animation: run 5s infinite;
+}	
+.Cheader{    text-align: center;
+    font-size: 34px;
+    color: #fff6a4;
+    font-family: 'Pacifico', cursive;
+    border: solid 5px;}
+.Cheader p{
+    margin: 17px;
+    border-bottom: black;}
+.Ccon{
+position: absolute;
+    top: 50%;
+    left: 50%;
+    right: 0;
+    background: #4cbcbb;
+    width: 80%;
+max-width:525px;    
+transform: translate(-50%,-50%);
+    padding: 18px;
+    color: #f9f9f9;
+    font-family: Arial, Microsoft Yahei;
+    font-weight: bold;}
+.ansbox{
+    background: #2e8988;
+    margin: 12px 0;
+    padding-left: 20px;
+    padding: 1px 20px 1px 20px;
+}
+.ansbox p{
+outline: none;
+    height: 100%;
+    overflow-x: auto;
+    margin: 9px 0;
+    white-space: nowrap;
+}
+.ansbuzz{
+cursor: pointer;
+    color: #2e8988;
+    height: 50px;
+    margin: 24px auto;
+    line-height: 50px;
+    width: 80%;
+    background: #fff;
+    text-align: center;
+    box-shadow: 7px 3px 10px #2e8988;
+
+}
+.Cq .q{
+letter-spacing: 1.2px;
+    line-height: 35px;
+    padding: 10px;}
+.Clink{
+font-size:20px;
+text-align:center;
+cursor:pointer}
+.Clink:hover{
+    text-decoration: underline;
+}
+</style>
+<script>
+	$(document).ready(function(){
+
+
+var cq1ans;
+var rep=Math.floor(Math.random() * 2);
+var prob =0;
+var startpt=0;
+var isPer =Math.floor(Math.random()*2);
+var iss=["选","排"];
+var strvoc=["红","黄","蓝","绿","白","黑","紫","橙","灰","褐"];
+var strvocno=new Array(strvoc.length);
+var strvocchk=new Array(strvoc.length);
+for(var iii=0;iii<strvocchk.length;iii++){
+strvocchk[i]=0;
+}
+var stralp=new Array(26);
+for(var ii=0;ii<stralp.length;ii++){
+stralp[ii]=(ii + 10).toString(36).toUpperCase();
+}
+ strvoc.sort(() => Math.random() - 0.5);
+ stralp.sort(() => Math.random() - 0.5);
+var isStr =3;
+var isvoc =["球，","球，","字，","数字，"];
+var cq1a = Math.floor(Math.random() * (10-2))+2;
+if(cq1a>=6){
+startpt=Math.floor(Math.random() * 3)+1;
+}
+var cq1b = Math.floor(Math.random() * (cq1a-startpt-2))+2;
+if(rep==1){
+cq1b=4;
+isStr =Math.floor(Math.random()*3);
+if(isStr == 0 || isStr ==1){
+prob=Math.floor(Math.random() * 2);
+}else{
+isPer=1;}
+}
+var cq1="从";
+
+var code = new Array(cq1a-startpt);
+var perma=0,permb=0,permc=0,permd=0;
+for(var i=startpt;i<cq1a;i++){
+if(rep==0){
+cq1+=i;
+if(i+1 != cq1a){
+cq1+=", ";}
+}else{
+
+
+
+
+var reptot=Math.floor(Math.random() * 5)+1;
+strvocno[i]=reptot;
+if(reptot >= 4){perma++;}
+if(reptot >= 3){permb++;}
+if(reptot >= 2){permc++;}
+if(reptot >= 1){permd++;}
+if(isStr == 0 || isStr ==1){
+
+cq1+=reptot+"颗"+strvoc[i]+"球";
+if(i+1 != cq1a){
+cq1+="，";
+}
+}
+else{
+for(var ia=0;ia<reptot;ia++){
+cq1+=stralp[i];
+if(i+1 != cq1a ||(i+1 == cq1a && ia+1 != reptot)){
+cq1+=", ";}
+}
+}
+
+
+
+
+}
+
+}
+
+cq1=cq1+"中选取"+cq1b+"个"+isvoc[isStr];
+if(rep==0){cq1+= "可组成多少";}else{
+if(prob == 1 && isStr != 2 )
+{cq1+= "选到";
+var rest=0;
+for(var i=startpt;i<cq1a;i++){
+if(i+1 == cq1a){
+strvocchk[i] = 4-rest;}
+else if(rest < 4){
+do{
+strvocchk[i] = Math.floor(Math.random() * (4-rest))+1;
+}while(strvocchk[i] > strvocno[i]);
+rest+=strvocchk[i];
+}else{
+strvocchk[i] = 0;
+}
+if(strvocchk[i]>0){
+cq1+=strvocchk[i]+"颗"+strvoc[i]+"球";
+if(rest <4){cq1+="，"}
+}
+}
+cq1 +="的概率是多少？";console.log(strvocchk);
+}
+else{
+cq1+= "有多少种"+iss[isPer]+"法？";
+}
+}
+
+cq1a-=startpt;
+if(Math.floor(Math.random() * 2) == 1 && rep==0){
+cq1+="不重复数字的"+cq1b+"位数？";
+cq1ans=nPr(cq1a,cq1b,startpt);
+
+}else if(rep==1){
+console.log(nCr(perma,1));
+console.log(nCr(permb,1)*nCr(cq1a-1,1));
+console.log(nCr(permc,1)*nCr(cq1a-1,2));
+console.log(nCr(permc,2));
+console.log(nCr(cq1a,4));
+if(prob == 1 && isStr != 2 ){
+
+var nSa=0;
+var nA=1;
+for(var iii=0;iii<strvocno.length;iii++){
+if(strvocno[iii] >0){
+nSa+=strvocno[iii];}
+}
+var nS=nCr(nSa,4);
+for(var iii=0;iii<strvocchk.length;iii++){
+if(strvocno[iii] !=0 && strvocchk[iii] !=0){
+nA*=nCr(strvocno[iii],strvocchk[iii]);
+}}
+cq1ans=nA/nS;
+}
+else if(isPer == 0){
+cq1ans=nCr(perma,1)+nCr(permb,1)*nCr(cq1a-1,1)+nCr(permc,1)*nCr(cq1a-1,2)+nCr(permc,2)+nCr(cq1a,4);
+}
+else if(isPer == 1){
+cq1ans=nCr(perma,1)+nCr(permb,1)*nCr(cq1a-1,1)*4+nCr(permc,1)*nCr(cq1a-1,2)*12+nCr(permc,2)*6+nCr(cq1a,4)*24;
+}
+console.log(cq1ans);
+}else{
+cq1+="可重复数字的"+cq1b+"位数？";
+cq1ans=times(cq1a,cq1b,startpt);
+
+}
+$("#cq1 .q").html(cq1);
+
+function times(n,r,cond){
+var ans=1;
+if(cond==0){
+r=r-1;
+ans*=(n-1);
+}
+for(var i=1;i<=r;i++){
+ans*=n;
+}
+return ans;
+
+}
+function nCr(n,r){
+if(n<r){return 0;}
+else{
+var num=1;
+var ans=1;
+for(var i=n;num<=r;i--){
+ans*=i;
+num++;}
+for(var i=1;i<=r;i++){
+ans /= i;
+}
+return ans;
+}
+}
+function nPr(n,r,cond){
+var num=1;
+var ans=1;
+if(cond==0){
+n=n-1;
+r=r-1;
+ans*=n;
+}
+for(var i=n;num<=r;i--){
+ans*=i;
+num++;}
+return ans;
+}
+
+function chk(){
+var uans=parseFloat($("#cq1 .ansbox p").html());
+if( uans% 1 != 0){
+cq1ans = parseFloat(cq1ans.toFixed(4));
+console.log(cq1ans);
+console.log(uans);
+}
+if(uans == cq1ans || (uans < cq1ans +0.001  && uans > cq1ans -0.001)){
+$("#cq1 .ansbuzz").html("答对了！");location.reload();
+}else if(isNaN(uans)){
+$("#cq1 .ansbuzz").html("请输入数值");}else{
+$("#cq1 .ansbuzz").html("不对哦");
+}
+}
+
+$(".ansbox p").focus();
+$(".ansbox p").on('keypress',function(e) {
+  if (isNaN(String.fromCharCode(e.which)) && e.which != 46) e.preventDefault();
+    if(e.which == 13) {
+chk();
+return false;
+    }
+});
+
+
+$( "#cq1 .ansbuzz" ).click(function() {
+chk();
+});
+
+	});
+
+</script>
+</head>
+<body>
+
+<div class="Ccon">
+<div class="Cheader">
+	<p>Math Conceptia</p>	
+</div>
+	<div class="Cq" id="cq1">
+<div class="q"></div>
+<div class="ansbox">
+<p contenteditable="true"></p>
+</div>
+<div class="ansbuzz">作答</div>
+	<a href="https://purz.w3spaces.com/index2.html?bypass-cache=1624588857/">
+		<div class="Clink" onclick="">下一题</div></a>
+
+</div>
+</div>
+<div class="Cfooter">
+	<p></p>	
+</div>
+</body>
+</html>
