@@ -3,7 +3,7 @@
 var x=("。 ， ？ ！ 、 ； ： “ ” ‘ ’ 「 」 『 』 ~ （ ） [ ] 〔 〕 ~ 【 】 ~ — — … … · — - ~ ～ · , 《 》 〈 〉 . ... ___ /").split(' ');
 function calc(){
 var s = document.getElementById("a").value;
-  s=s.replaceAll(' ', '').replaceAll(/(\r\n|\n|\r)/gm, "");;
+  s=s.replaceAll(' ', '').replaceAll(/(\r\n|\n|\r)/gm, "").replace(/[0-9]/g, '').replace(/[a-z]/g, '').replace(/[A-Z]/g, '');
   for(var i = 0; i < x.length; i++){
     s=s.replaceAll(x[i], '');
   }
