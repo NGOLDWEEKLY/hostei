@@ -5,7 +5,7 @@ function calc(){
 var s = document.getElementById("a").value;
   s=s.replace(' ', '');
   for(var i = 0; i < x.length; i++){
-    s=s.replace(x[i], '');
+    s=s.replaceAll(x[i], '');
   }
   document.getElementById("res").innerHTML = (s.length);
 }
