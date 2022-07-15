@@ -1,0 +1,16 @@
+<script>
+var x=("。 ？ ！ 、 ； ： “ ” ‘ ’ 「」『』 ~ （） [] 〔〕 ~ 【】 ~ —— …… · — - ~ ～ · 《》〈〉 . ... ___ /").split(' ');
+function calc(){
+var s = document.getElementById("a").value;
+  s.replace(' ', '');
+  for(var i = 0; i < x.length; i++){
+    x.replace(x[i], '');
+  }
+  document.getElementById("res").innerHTML = (x.length);
+}
+</script>
+<div>
+  <textarea id="a"></textarea>
+  <input type="submit" id="s" onclick="calc()">
+  字数:：<span id="res"></span>
+</div>
