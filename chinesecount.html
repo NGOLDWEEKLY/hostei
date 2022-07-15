@@ -1,10 +1,10 @@
 <script>
-var x=("。 ？ ！ 、 ； ： “ ” ‘ ’ 「」『』 ~ （） [] 〔〕 ~ 【】 ~ —— …… · — - ~ ～ · 《》〈〉 . ... ___ /").split(' ');
+var x=("。 ？ ！ 、 ； ： “ ” ‘ ’ 「」『』 ~ （） [] 〔〕 ~ 【】 ~ —— …… · — - ~ ～ · , 《》〈〉 . ... ___ /").split(' ');
 function calc(){
 var s = document.getElementById("a").value;
-  s.replace(' ', '');
+  s=s.replace(' ', '');
   for(var i = 0; i < x.length; i++){
-    s.replace(x[i], '');
+    s=s.replace(x[i], '');
   }
   document.getElementById("res").innerHTML = (s.length);
 }
