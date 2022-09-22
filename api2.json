@@ -1,0 +1,6 @@
+{
+  "Person1": {"empID": 1101, "totalsales" : 30000},
+  "Person2": {"empID": 1102, "totalsales" : 30000},
+  "Person3": {"empID": 1103, "totalsales" : 10000},
+  "Person4": {"empID": 1104, "totalsales" : 70000}
+}
