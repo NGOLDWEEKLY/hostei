@@ -900,7 +900,7 @@
       };
       {
         defaultOptions.defaultUrl = {
-          value: "a.pdf",
+          value: window.location.href.split('=')[1],
           kind: OptionKind.VIEWER
         };
         defaultOptions.disablePreferences = {
