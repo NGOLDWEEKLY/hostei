@@ -2326,9 +2326,9 @@
               parameters[key] = args[key];
             }
           }
-           parameters['data'] = atob(window.location.href.split('=')[1]);
+//           parameters['data'] = atob(window.location.href.split('=')[1]);
 
-          const loadingTask = (0, _pdfjsLib.getDocument)({data: atob(window.location.href.split('=')[1])});
+          const loadingTask = (0, _pdfjsLib.getDocument)({data: atob(decodeURIComponent(window.location.href.split('file=')[1]))});
           this.pdfLoadingTask = loadingTask;
 
           loadingTask.onPassword = (updateCallback, reason) => {
